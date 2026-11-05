@@ -56,11 +56,11 @@ Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13�
 **Prioritas:** P0 | **Ukuran:** S | **PRD:** §3.2–3.3, FR-001.
 **Dependensi:** T003, T009, T011.
 **Tujuan:** Implementasikan transisi tick murni untuk source, jalur terarah, dan pergerakan serentak.
-**Output rencana (≤5 file):** `apps/game/lib/domain/engine_state.dart`, `apps/game/lib/domain/tick_engine.dart`, `apps/game/test/domain/tick_engine_test.dart`.
+**Output rencana (≤5 file):** `packages/puzzle_domain/lib/src/engine_state.dart`, `packages/puzzle_domain/lib/src/tick_engine.dart`, `packages/puzzle_domain/test/tick_engine_test.dart`.
 **Kriteria selesai:**
-- [ ] Source mengikuti emission rules; setiap sinyal bergerak maksimal satu edge per tick.
-- [ ] Semua gerak dihitung dari state awal tick yang sama, bukan hasil mutasi sinyal sebelumnya.
-- [ ] Engine hanya memakai data domain dan logika deterministik; tidak membaca frame time, wall clock, renderer, atau sumber random tersembunyi.
+- [x] Source mengikuti emission rules; setiap sinyal bergerak maksimal satu edge per tick.
+- [x] Semua gerak dihitung dari state awal tick yang sama, bukan hasil mutasi sinyal sebelumnya.
+- [x] Engine hanya memakai data domain dan logika deterministik; tidak membaca frame time, wall clock, renderer, atau sumber random tersembunyi.
 **Verifikasi:** Jalankan vectors source/path dan permutasi urutan node/sinyal; expected state tidak berubah oleh urutan koleksi.
 
 <a id="t013"></a>
