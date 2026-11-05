@@ -1,0 +1,8 @@
+# Stable bytes across Windows/Linux clones, including pinned JS worker hashes.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.png binary
+*.wasm binary
+*.otf binary
+*.ttf binary

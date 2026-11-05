@@ -1,0 +1,523 @@
+{
+  "limits_version": "sz-limits-1",
+  "numeric_boundaries": [
+    {
+      "field": "nodes",
+      "maximum": 64,
+      "cases": [
+        {
+          "value": 63,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 64,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 65,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "edges",
+      "maximum": 128,
+      "cases": [
+        {
+          "value": 127,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 128,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 129,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "sources",
+      "maximum": 8,
+      "cases": [
+        {
+          "value": 7,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 8,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 9,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "targets",
+      "maximum": 8,
+      "cases": [
+        {
+          "value": 7,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 8,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 9,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "switches",
+      "maximum": 32,
+      "cases": [
+        {
+          "value": 31,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 32,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 33,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "tick_limit",
+      "maximum": 64,
+      "cases": [
+        {
+          "value": 63,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 64,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 65,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "shift_actions",
+      "maximum": 64,
+      "cases": [
+        {
+          "value": 63,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 64,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 65,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "id_bytes",
+      "maximum": 32,
+      "cases": [
+        {
+          "value": 31,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 32,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 33,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "puzzle_json_bytes",
+      "maximum": 65536,
+      "cases": [
+        {
+          "value": 65535,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 65536,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 65537,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "replay_json_bytes",
+      "maximum": 16384,
+      "cases": [
+        {
+          "value": 16383,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 16384,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 16385,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "submission_body_bytes",
+      "maximum": 131072,
+      "cases": [
+        {
+          "value": 131071,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 131072,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 131073,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "json_depth",
+      "maximum": 16,
+      "cases": [
+        {
+          "value": 15,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 16,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 17,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "share_encoded_bytes",
+      "maximum": 65536,
+      "cases": [
+        {
+          "value": 65535,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 65536,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 65537,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "share_decoded_bytes",
+      "maximum": 65536,
+      "cases": [
+        {
+          "value": 65535,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 65536,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 65537,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "backup_encoded_bytes",
+      "maximum": 2097152,
+      "cases": [
+        {
+          "value": 2097151,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 2097152,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 2097153,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "backup_decoded_bytes",
+      "maximum": 8388608,
+      "cases": [
+        {
+          "value": 8388607,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 8388608,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 8388609,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "backup_entity_count",
+      "maximum": 10000,
+      "cases": [
+        {
+          "value": 9999,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 10000,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 10001,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "solver_states",
+      "maximum": 25000,
+      "cases": [
+        {
+          "value": 24999,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 25000,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 25001,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "solver_transitions",
+      "maximum": 50000,
+      "cases": [
+        {
+          "value": 49999,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 50000,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 50001,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    },
+    {
+      "field": "solver_memory_bytes",
+      "maximum": 33554432,
+      "cases": [
+        {
+          "value": 33554431,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 33554432,
+          "expected": "WITHIN_LIMIT"
+        },
+        {
+          "value": 33554433,
+          "expected": "LIMIT_EXCEEDED"
+        }
+      ]
+    }
+  ],
+  "minimum_boundaries": [
+    {
+      "field": "nodes",
+      "minimum": 2,
+      "below": 1,
+      "at": 2
+    },
+    {
+      "field": "sources",
+      "minimum": 1,
+      "below": 0,
+      "at": 1
+    },
+    {
+      "field": "targets",
+      "minimum": 1,
+      "below": 0,
+      "at": 1
+    },
+    {
+      "field": "tick_limit",
+      "minimum": 1,
+      "below": 0,
+      "at": 1
+    }
+  ],
+  "rejection_cases": [
+    {
+      "id": "duplicate_node",
+      "expected_error": "DUPLICATE_ID",
+      "construction": "Repeat node id a."
+    },
+    {
+      "id": "foreign_endpoint",
+      "expected_error": "UNKNOWN_REFERENCE",
+      "construction": "Edge references missing node."
+    },
+    {
+      "id": "unknown_gameplay_field",
+      "expected_error": "UNKNOWN_FIELD",
+      "construction": "Add executable or URL field to gameplay object."
+    },
+    {
+      "id": "duplicate_json_key",
+      "expected_error": "DUPLICATE_FIELD",
+      "construction": "Raw JSON contains the same key twice."
+    },
+    {
+      "id": "unknown_version",
+      "expected_error": "UNSUPPORTED_VERSION",
+      "construction": "sz-rules-999 must not use latest handler."
+    },
+    {
+      "id": "fraction_tick",
+      "expected_error": "INVALID_INTEGER",
+      "construction": "tick_limit token 1.0."
+    },
+    {
+      "id": "exponent_tick",
+      "expected_error": "INVALID_INTEGER",
+      "construction": "tick_limit token 1e1."
+    },
+    {
+      "id": "negative_zero",
+      "expected_error": "INVALID_INTEGER",
+      "construction": "Raw tick token -0."
+    },
+    {
+      "id": "bool_tick",
+      "expected_error": "INVALID_INTEGER",
+      "construction": "true is not integer 1."
+    },
+    {
+      "id": "negative_tick",
+      "expected_error": "INVALID_INTEGER",
+      "construction": "Negative integer token."
+    },
+    {
+      "id": "duplicate_shift",
+      "expected_error": "NON_CANONICAL_ACTIONS",
+      "construction": "shift_ticks [2,2]."
+    },
+    {
+      "id": "unsorted_shift",
+      "expected_error": "NON_CANONICAL_ACTIONS",
+      "construction": "shift_ticks [2,1]."
+    },
+    {
+      "id": "tick_zero",
+      "expected_error": "INVALID_TICK",
+      "construction": "shift_ticks [0]."
+    },
+    {
+      "id": "tick_over_limit",
+      "expected_error": "INVALID_TICK",
+      "construction": "shift_ticks [65], tick_limit64, even if earlier completion."
+    },
+    {
+      "id": "source_target_count",
+      "expected_error": "INVALID_GRAPH",
+      "construction": "Source and target counts differ."
+    },
+    {
+      "id": "duplicate_port",
+      "expected_error": "INVALID_GRAPH",
+      "construction": "Switch uses port0 twice or lacks port1."
+    },
+    {
+      "id": "compression_bomb",
+      "expected_error": "DECOMPRESSED_LIMIT",
+      "construction": "Streaming output exceeds decoded byte budget; stop before JSON parse."
+    },
+    {
+      "id": "deep_json",
+      "expected_error": "DEPTH_LIMIT",
+      "construction": "Nested input exceeds16."
+    },
+    {
+      "id": "truncated_payload",
+      "expected_error": "MALFORMED_INPUT",
+      "construction": "Incomplete JSON/compressed frame."
+    },
+    {
+      "id": "backup_unknown_secret",
+      "expected_error": "UNKNOWN_FIELD",
+      "construction": "Unknown wallet_secret/private_key field rejected by allowlist."
+    },
+    {
+      "id": "unicode_id",
+      "expected_error": "INVALID_ID",
+      "construction": "Gameplay id contains non-ASCII code point."
+    },
+    {
+      "id": "checksum_wrong",
+      "expected_error": "CHECKSUM_MISMATCH",
+      "construction": "Imported file checksum does not match content."
+    }
+  ],
+  "non_invalid_results": [
+    {
+      "case": "legal_cycle",
+      "schema": "VALID",
+      "simulation": "TICK_LIMIT unless valid SHIFT exits",
+      "solver": "UNKNOWN until proof or bounded search completes"
+    },
+    {
+      "case": "solver_budget",
+      "schema": "VALID",
+      "solver": "BUDGET_EXHAUSTED",
+      "not": "UNSATISFIABLE_OR_OPTIMAL"
+    },
+    {
+      "case": "one_found_solution_no_proof",
+      "schema": "VALID",
+      "solver": "SOLVED_UNPROVEN",
+      "not": "OPTIMAL"
+    }
+  ]
+}

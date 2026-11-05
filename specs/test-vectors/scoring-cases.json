@@ -1,0 +1,219 @@
+{
+  "rules_version": "sz-rules-1",
+  "identity_vector": {
+    "rules_case": "shift_before_move",
+    "canonical_puzzle": "{\"edges\":[{\"from\":\"a\",\"id\":\"as\",\"port\":0,\"to\":\"s\"},{\"from\":\"r\",\"id\":\"rs\",\"port\":0,\"to\":\"s\"},{\"from\":\"s\",\"id\":\"sr\",\"port\":0,\"to\":\"r\"},{\"from\":\"s\",\"id\":\"st\",\"port\":1,\"to\":\"t\"}],\"engine_version\":\"sz-engine-1\",\"nodes\":[{\"id\":\"a\",\"kind\":\"source\"},{\"id\":\"r\",\"kind\":\"relay\"},{\"id\":\"s\",\"initial_state\":0,\"kind\":\"switch\"},{\"id\":\"t\",\"kind\":\"target\"}],\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-puzzle-1\",\"tick_limit\":4}",
+    "puzzle_hash": "0x4859c4f012eb1f00609e430beabfe1543f201beac17e349ee92021a72262de9e",
+    "normalized_replay": {
+      "schema_version": "sz-replay-1",
+      "engine_version": "sz-engine-1",
+      "rules_version": "sz-rules-1",
+      "puzzle_hash": "0x4859c4f012eb1f00609e430beabfe1543f201beac17e349ee92021a72262de9e",
+      "shift_ticks": [
+        2
+      ]
+    },
+    "canonical_replay": "{\"engine_version\":\"sz-engine-1\",\"puzzle_hash\":\"0x4859c4f012eb1f00609e430beabfe1543f201beac17e349ee92021a72262de9e\",\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-replay-1\",\"shift_ticks\":[2]}",
+    "private_replay_digest": "0x4b9180a6a94c6174b6069cfd2a1262870c4796364dab8a1f52a8ae7ac07808ed",
+    "salt_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+    "replay_commitment": "0xe21a0940ddccaf0862aca45e46bf305fd3b3d344cd4e8b8abc69aeaf39cfaf08"
+  },
+  "version_hashes": {
+    "sz-puzzle-1": "0x4282b9f421d7295b5c7e0f9491807cfe8e82caeab3511bd2a64bfc175ebecb6a",
+    "sz-replay-1": "0x6266c7f2eda2966d31853ea2e1841c791705c1fb114daedb268b289d920b20ab",
+    "sz-engine-1": "0xf9cb13fce8aafd347e2aadcb332639502ce164ea493f6efe62a8d596fa7b71aa",
+    "sz-rules-1": "0x695f2a0fe5ab39b18d3a720208f4c30961275794af01650b1aaaa848984182bc",
+    "sz-generator-1": "0xeaa3af69957b1b9d1f3be5c43f9a0adc8458e80bc6f5ee33bb64b626ce16c7a0",
+    "sz-cjson-1": "0x2d676b4885f3a1a8bba1af713d2d6082d94abb0667ddaa2e9c0a8bfb311193f9",
+    "sz-limits-1": "0x739cf6923ff3b74b3f9c0f49737c17f9688a6017ae33ad8ba3d63d1a930f4171"
+  },
+  "normalization_cases": [
+    {
+      "id": "no_shift",
+      "rules_case": "single_path",
+      "tick_limit": 2,
+      "submitted_shift_ticks": [],
+      "completion_tick": 2,
+      "normalized_shift_ticks": [],
+      "score": [
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "id": "one_shift",
+      "rules_case": "shift_before_move",
+      "tick_limit": 4,
+      "submitted_shift_ticks": [
+        2
+      ],
+      "completion_tick": 2,
+      "normalized_shift_ticks": [
+        2
+      ],
+      "score": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "id": "trim_unused_shift",
+      "rules_case": "shift_before_move",
+      "tick_limit": 4,
+      "submitted_shift_ticks": [
+        2,
+        4
+      ],
+      "completion_tick": 2,
+      "normalized_shift_ticks": [
+        2
+      ],
+      "score": [
+        1,
+        2,
+        1
+      ]
+    }
+  ],
+  "comparison_cases": [
+    {
+      "left": [
+        1,
+        20,
+        1
+      ],
+      "right": [
+        2,
+        2,
+        2
+      ],
+      "expected_comparison": "LESS"
+    },
+    {
+      "left": [
+        2,
+        5,
+        2
+      ],
+      "right": [
+        2,
+        6,
+        2
+      ],
+      "expected_comparison": "LESS"
+    },
+    {
+      "left": [
+        2,
+        5,
+        2
+      ],
+      "right": [
+        2,
+        5,
+        2
+      ],
+      "expected_comparison": "EQUAL"
+    },
+    {
+      "left": [
+        3,
+        2,
+        3
+      ],
+      "right": [
+        2,
+        20,
+        2
+      ],
+      "expected_comparison": "GREATER"
+    },
+    {
+      "left": [
+        2,
+        5,
+        3
+      ],
+      "right": [
+        2,
+        5,
+        4
+      ],
+      "expected_comparison": "LESS",
+      "note": "Comparator interface only; baseline scorer rejects these action-count mismatches."
+    }
+  ],
+  "edit_histories": [
+    {
+      "edits": [
+        "ADD_2",
+        "ADD_3",
+        "REMOVE_3"
+      ],
+      "final_shift_ticks": [
+        2
+      ],
+      "score": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "edits": [
+        "ADD_2"
+      ],
+      "final_shift_ticks": [
+        2
+      ],
+      "score": [
+        1,
+        2,
+        1
+      ]
+    }
+  ],
+  "attempt_boundaries": [
+    {
+      "successful_attempt": 9,
+      "never_give_up": "LOCKED"
+    },
+    {
+      "successful_attempt": 10,
+      "never_give_up": "UNLOCKED"
+    },
+    {
+      "successful_attempt": 11,
+      "never_give_up": "UNLOCKED"
+    }
+  ],
+  "achievement_proof_cases": [
+    {
+      "id": "think_ahead_bloated_player_program",
+      "player_shift_count": 4,
+      "minimum_shift_proven": 2,
+      "expected": "LOCKED"
+    },
+    {
+      "id": "think_ahead_proven_three",
+      "player_shift_count": 3,
+      "minimum_shift_proven": 3,
+      "expected": "UNLOCKED"
+    },
+    {
+      "id": "perfect_timing_tick_global",
+      "completion_tick": 3,
+      "proven_global_tick_optimum": 3,
+      "lexicographic_solution_tick": 5,
+      "expected": "UNLOCKED"
+    },
+    {
+      "id": "perfect_timing_unknown",
+      "completion_tick": 3,
+      "proof_status": "BUDGET_EXHAUSTED",
+      "expected": "LOCKED"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+name: puzzle_domain
+description: SDK-only domain foundation for SIGNAL ZERO; engine follows in phase 02.
+version: 0.1.0
+publish_to: none
+environment:
+  sdk: '>=3.9.2 <4.0.0'

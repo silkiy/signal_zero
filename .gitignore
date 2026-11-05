@@ -1,0 +1,32 @@
+# Flutter/Dart build output and local tooling
+**/.dart_tool/
+**/build/
+**/.flutter-plugins-dependencies
+.fvm/
+.tools/
+node_modules/
+**/.idea/
+**/*.iml
+**/coverage/
+**/__pycache__/
+*.pyc
+
+# Local configuration, credentials, signing material
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.jks
+*.keystore
+**/key.properties
+**/local.properties
+**/Pods/
+**/.symlinks/
+**/ephemeral/
+*.szsave
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Lockfiles for runnable apps are retained.

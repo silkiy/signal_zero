@@ -1,0 +1,92 @@
+{
+  "browser": "156.0.8078.80",
+  "checkedAt": "2026-11-05T16:25:18.327Z",
+  "results": [
+    {
+      "embedded": false,
+      "initial": {
+        "ready": true,
+        "value": 0,
+        "storage": "sharedIndexedDb",
+        "missingFeatures": [
+          "MissingBrowserFeature.dedicatedWorkersInSharedWorkers",
+          "MissingBrowserFeature.sharedArrayBuffers"
+        ],
+        "frames": 23,
+        "taps": 0,
+        "audio": "not-started",
+        "muted": false,
+        "operation": "opened",
+        "error": ""
+      },
+      "afterReload": true,
+      "exportImport": true,
+      "invalidImportPreserved": true,
+      "audioUserGesture": true,
+      "mute": true,
+      "pointerInput": true,
+      "offlineReload": "not-tested",
+      "offlineIncrement": true,
+      "final": {
+        "ready": true,
+        "value": 38,
+        "storage": "sharedIndexedDb",
+        "missingFeatures": [
+          "MissingBrowserFeature.dedicatedWorkersInSharedWorkers",
+          "MissingBrowserFeature.sharedArrayBuffers"
+        ],
+        "frames": 64,
+        "taps": 0,
+        "audio": "not-started",
+        "muted": false,
+        "operation": "incremented",
+        "error": ""
+      },
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "embedded": true,
+      "initial": {
+        "ready": true,
+        "value": 0,
+        "storage": "sharedIndexedDb",
+        "missingFeatures": [
+          "MissingBrowserFeature.dedicatedWorkersInSharedWorkers",
+          "MissingBrowserFeature.sharedArrayBuffers"
+        ],
+        "frames": 45,
+        "taps": 0,
+        "audio": "not-started",
+        "muted": false,
+        "operation": "opened",
+        "error": ""
+      },
+      "afterReload": true,
+      "exportImport": true,
+      "invalidImportPreserved": true,
+      "audioUserGesture": true,
+      "mute": true,
+      "pointerInput": true,
+      "offlineReload": "not-tested",
+      "offlineIncrement": true,
+      "final": {
+        "ready": true,
+        "value": 38,
+        "storage": "sharedIndexedDb",
+        "missingFeatures": [
+          "MissingBrowserFeature.dedicatedWorkersInSharedWorkers",
+          "MissingBrowserFeature.sharedArrayBuffers"
+        ],
+        "frames": 90,
+        "taps": 0,
+        "audio": "not-started",
+        "muted": false,
+        "operation": "incremented",
+        "error": ""
+      },
+      "errors": [],
+      "failedRequests": []
+    }
+  ]
+}

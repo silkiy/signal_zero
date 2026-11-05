@@ -1,0 +1,21 @@
+{
+  "purpose": "T004 Drift web compatibility; runtime dependencies, not game artwork/audio",
+  "assets": [
+    {
+      "file": "drift_worker.js",
+      "package": "drift",
+      "version": "2.30.0",
+      "source": "https://github.com/simolus3/drift/releases/download/drift-2.30.0/drift_worker.js",
+      "sha256": "f0a9b87085f732fd7b6ee7eb34d3858c556f05d221eb1febfc443649cd365752",
+      "license": "MIT; see vendor-licenses/drift-LICENSE"
+    },
+    {
+      "file": "sqlite3.wasm",
+      "package": "sqlite3",
+      "version": "2.9.4",
+      "source": "https://github.com/simolus3/sqlite3.dart/releases/download/sqlite3-2.9.4/sqlite3.wasm",
+      "sha256": "922a76b182b6af69b030c8e2fdd3283ecc8e827248b20e4b1f3f3db170b52117",
+      "license": "SQLite core public domain; Dart bindings MIT; see vendor-licenses/sqlite3-LICENSE"
+    }
+  ]
+}

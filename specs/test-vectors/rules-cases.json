@@ -1,0 +1,1286 @@
+{
+  "rules_version": "sz-rules-1",
+  "fixture_origin": "Explicit manual tick walkthrough rows; formatting helpers do not simulate movement or choose terminal outcomes.",
+  "cases": [
+    {
+      "id": "single_path",
+      "review_note": "Manual: source a emits at0, traverses ab at1 and bt at2.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 2,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "b",
+            "kind": "relay"
+          },
+          {
+            "id": "t",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "ab",
+            "from": "a",
+            "to": "b",
+            "port": 0
+          },
+          {
+            "id": "bt",
+            "from": "b",
+            "to": "t",
+            "port": 0
+          }
+        ]
+      },
+      "shift_ticks": [],
+      "expected_snapshots": [
+        {
+          "tick": 0,
+          "signals": {
+            "a": "a"
+          },
+          "switches": {},
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 1,
+          "signals": {
+            "a": "b"
+          },
+          "switches": {},
+          "used_edges": {
+            "a": "ab"
+          },
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 2,
+          "signals": {
+            "a": "t"
+          },
+          "switches": {},
+          "used_edges": {
+            "a": "bt"
+          },
+          "target_arrivals": {
+            "t": [
+              "a"
+            ]
+          },
+          "status": "SUCCEEDED",
+          "reason": "SUCCESS"
+        }
+      ],
+      "expected_terminal_reason": "SUCCESS"
+    },
+    {
+      "id": "success_exact_limit",
+      "review_note": "Success evaluated before tick budget failure at tick1.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 1,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "t",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "at",
+            "from": "a",
+            "to": "t",
+            "port": 0
+          }
+        ]
+      },
+      "shift_ticks": [],
+      "expected_snapshots": [
+        {
+          "tick": 0,
+          "signals": {
+            "a": "a"
+          },
+          "switches": {},
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 1,
+          "signals": {
+            "a": "t"
+          },
+          "switches": {},
+          "used_edges": {
+            "a": "at"
+          },
+          "target_arrivals": {
+            "t": [
+              "a"
+            ]
+          },
+          "status": "SUCCEEDED",
+          "reason": "SUCCESS"
+        }
+      ],
+      "expected_terminal_reason": "SUCCESS"
+    },
+    {
+      "id": "tick_limit",
+      "review_note": "No tick2 is executed; target needs another edge.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 1,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "b",
+            "kind": "relay"
+          },
+          {
+            "id": "t",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "ab",
+            "from": "a",
+            "to": "b",
+            "port": 0
+          },
+          {
+            "id": "bt",
+            "from": "b",
+            "to": "t",
+            "port": 0
+          }
+        ]
+      },
+      "shift_ticks": [],
+      "expected_snapshots": [
+        {
+          "tick": 0,
+          "signals": {
+            "a": "a"
+          },
+          "switches": {},
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 1,
+          "signals": {
+            "a": "b"
+          },
+          "switches": {},
+          "used_edges": {
+            "a": "ab"
+          },
+          "target_arrivals": {},
+          "status": "FAILED",
+          "reason": "TICK_LIMIT"
+        }
+      ],
+      "expected_terminal_reason": "TICK_LIMIT"
+    },
+    {
+      "id": "shift_before_move",
+      "review_note": "SHIFT at2 toggles s before routing the token already at s.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 4,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "s",
+            "kind": "switch",
+            "initial_state": 0
+          },
+          {
+            "id": "r",
+            "kind": "relay"
+          },
+          {
+            "id": "t",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "as",
+            "from": "a",
+            "to": "s",
+            "port": 0
+          },
+          {
+            "id": "sr",
+            "from": "s",
+            "to": "r",
+            "port": 0
+          },
+          {
+            "id": "st",
+            "from": "s",
+            "to": "t",
+            "port": 1
+          },
+          {
+            "id": "rs",
+            "from": "r",
+            "to": "s",
+            "port": 0
+          }
+        ]
+      },
+      "shift_ticks": [
+        2
+      ],
+      "expected_snapshots": [
+        {
+          "tick": 0,
+          "signals": {
+            "a": "a"
+          },
+          "switches": {
+            "s": 0
+          },
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 1,
+          "signals": {
+            "a": "s"
+          },
+          "switches": {
+            "s": 0
+          },
+          "used_edges": {
+            "a": "as"
+          },
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 2,
+          "signals": {
+            "a": "t"
+          },
+          "switches": {
+            "s": 1
+          },
+          "used_edges": {
+            "a": "st"
+          },
+          "target_arrivals": {
+            "t": [
+              "a"
+            ]
+          },
+          "status": "SUCCEEDED",
+          "reason": "SUCCESS"
+        }
+      ],
+      "expected_terminal_reason": "SUCCESS"
+    },
+    {
+      "id": "global_shift",
+      "review_note": "Both bits toggle together; routing on new bits reaches x and y.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 2,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "b",
+            "kind": "source"
+          },
+          {
+            "id": "u",
+            "kind": "switch",
+            "initial_state": 0
+          },
+          {
+            "id": "v",
+            "kind": "switch",
+            "initial_state": 0
+          },
+          {
+            "id": "x",
+            "kind": "target"
+          },
+          {
+            "id": "y",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "au",
+            "from": "a",
+            "to": "u",
+            "port": 0
+          },
+          {
+            "id": "bv",
+            "from": "b",
+            "to": "v",
+            "port": 0
+          },
+          {
+            "id": "uy",
+            "from": "u",
+            "to": "y",
+            "port": 0
+          },
+          {
+            "id": "ux",
+            "from": "u",
+            "to": "x",
+            "port": 1
+          },
+          {
+            "id": "vx",
+            "from": "v",
+            "to": "x",
+            "port": 0
+          },
+          {
+            "id": "vy",
+            "from": "v",
+            "to": "y",
+            "port": 1
+          }
+        ]
+      },
+      "shift_ticks": [
+        2
+      ],
+      "expected_snapshots": [
+        {
+          "tick": 0,
+          "signals": {
+            "a": "a",
+            "b": "b"
+          },
+          "switches": {
+            "u": 0,
+            "v": 0
+          },
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 1,
+          "signals": {
+            "a": "u",
+            "b": "v"
+          },
+          "switches": {
+            "u": 0,
+            "v": 0
+          },
+          "used_edges": {
+            "a": "au",
+            "b": "bv"
+          },
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 2,
+          "signals": {
+            "a": "x",
+            "b": "y"
+          },
+          "switches": {
+            "u": 1,
+            "v": 1
+          },
+          "used_edges": {
+            "a": "ux",
+            "b": "vy"
+          },
+          "target_arrivals": {
+            "x": [
+              "a"
+            ],
+            "y": [
+              "b"
+            ]
+          },
+          "status": "SUCCEEDED",
+          "reason": "SUCCESS"
+        }
+      ],
+      "expected_terminal_reason": "SUCCESS"
+    },
+    {
+      "id": "simultaneous_sync",
+      "review_note": "Both targets first receive exactly one token at2.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 3,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "b",
+            "kind": "source"
+          },
+          {
+            "id": "p",
+            "kind": "relay"
+          },
+          {
+            "id": "q",
+            "kind": "relay"
+          },
+          {
+            "id": "x",
+            "kind": "target"
+          },
+          {
+            "id": "y",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "ap",
+            "from": "a",
+            "to": "p",
+            "port": 0
+          },
+          {
+            "id": "bq",
+            "from": "b",
+            "to": "q",
+            "port": 0
+          },
+          {
+            "id": "px",
+            "from": "p",
+            "to": "x",
+            "port": 0
+          },
+          {
+            "id": "qy",
+            "from": "q",
+            "to": "y",
+            "port": 0
+          }
+        ]
+      },
+      "shift_ticks": [],
+      "expected_snapshots": [
+        {
+          "tick": 0,
+          "signals": {
+            "a": "a",
+            "b": "b"
+          },
+          "switches": {},
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 1,
+          "signals": {
+            "a": "p",
+            "b": "q"
+          },
+          "switches": {},
+          "used_edges": {
+            "a": "ap",
+            "b": "bq"
+          },
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 2,
+          "signals": {
+            "a": "x",
+            "b": "y"
+          },
+          "switches": {},
+          "used_edges": {
+            "a": "px",
+            "b": "qy"
+          },
+          "target_arrivals": {
+            "x": [
+              "a"
+            ],
+            "y": [
+              "b"
+            ]
+          },
+          "status": "SUCCEEDED",
+          "reason": "SUCCESS"
+        }
+      ],
+      "expected_terminal_reason": "SUCCESS"
+    },
+    {
+      "id": "partial_target_sync_miss",
+      "review_note": "x receives at1 but y does not; no latching or tick2 retry.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 3,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "b",
+            "kind": "source"
+          },
+          {
+            "id": "q",
+            "kind": "relay"
+          },
+          {
+            "id": "x",
+            "kind": "target"
+          },
+          {
+            "id": "y",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "ax",
+            "from": "a",
+            "to": "x",
+            "port": 0
+          },
+          {
+            "id": "bq",
+            "from": "b",
+            "to": "q",
+            "port": 0
+          },
+          {
+            "id": "qy",
+            "from": "q",
+            "to": "y",
+            "port": 0
+          }
+        ]
+      },
+      "shift_ticks": [],
+      "expected_snapshots": [
+        {
+          "tick": 0,
+          "signals": {
+            "a": "a",
+            "b": "b"
+          },
+          "switches": {},
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 1,
+          "signals": {
+            "a": "x",
+            "b": "q"
+          },
+          "switches": {},
+          "used_edges": {
+            "a": "ax",
+            "b": "bq"
+          },
+          "target_arrivals": {
+            "x": [
+              "a"
+            ]
+          },
+          "status": "FAILED",
+          "reason": "SYNC_MISS"
+        }
+      ],
+      "expected_terminal_reason": "SYNC_MISS"
+    },
+    {
+      "id": "node_collision",
+      "review_note": "Both moves use prior positions then occupy m; source iteration cannot change this.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 3,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "b",
+            "kind": "source"
+          },
+          {
+            "id": "m",
+            "kind": "switch",
+            "initial_state": 0
+          },
+          {
+            "id": "x",
+            "kind": "target"
+          },
+          {
+            "id": "y",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "am",
+            "from": "a",
+            "to": "m",
+            "port": 0
+          },
+          {
+            "id": "bm",
+            "from": "b",
+            "to": "m",
+            "port": 0
+          },
+          {
+            "id": "mx",
+            "from": "m",
+            "to": "x",
+            "port": 0
+          },
+          {
+            "id": "my",
+            "from": "m",
+            "to": "y",
+            "port": 1
+          }
+        ]
+      },
+      "shift_ticks": [],
+      "expected_snapshots": [
+        {
+          "tick": 0,
+          "signals": {
+            "a": "a",
+            "b": "b"
+          },
+          "switches": {
+            "m": 0
+          },
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 1,
+          "signals": {
+            "a": "m",
+            "b": "m"
+          },
+          "switches": {
+            "m": 0
+          },
+          "used_edges": {
+            "a": "am",
+            "b": "bm"
+          },
+          "target_arrivals": {},
+          "status": "FAILED",
+          "reason": "NODE_COLLISION"
+        }
+      ],
+      "expected_terminal_reason": "NODE_COLLISION"
+    },
+    {
+      "id": "head_on_edge_collision",
+      "review_note": "Distinct endpoints after movement do not excuse opposite use of one corridor.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 4,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "b",
+            "kind": "source"
+          },
+          {
+            "id": "u",
+            "kind": "switch",
+            "initial_state": 0
+          },
+          {
+            "id": "v",
+            "kind": "switch",
+            "initial_state": 0
+          },
+          {
+            "id": "x",
+            "kind": "target"
+          },
+          {
+            "id": "y",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "au",
+            "from": "a",
+            "to": "u",
+            "port": 0
+          },
+          {
+            "id": "bv",
+            "from": "b",
+            "to": "v",
+            "port": 0
+          },
+          {
+            "id": "uv",
+            "from": "u",
+            "to": "v",
+            "port": 0
+          },
+          {
+            "id": "ux",
+            "from": "u",
+            "to": "x",
+            "port": 1
+          },
+          {
+            "id": "vu",
+            "from": "v",
+            "to": "u",
+            "port": 0
+          },
+          {
+            "id": "vy",
+            "from": "v",
+            "to": "y",
+            "port": 1
+          }
+        ]
+      },
+      "shift_ticks": [],
+      "expected_snapshots": [
+        {
+          "tick": 0,
+          "signals": {
+            "a": "a",
+            "b": "b"
+          },
+          "switches": {
+            "u": 0,
+            "v": 0
+          },
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 1,
+          "signals": {
+            "a": "u",
+            "b": "v"
+          },
+          "switches": {
+            "u": 0,
+            "v": 0
+          },
+          "used_edges": {
+            "a": "au",
+            "b": "bv"
+          },
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 2,
+          "signals": {
+            "a": "v",
+            "b": "u"
+          },
+          "switches": {
+            "u": 0,
+            "v": 0
+          },
+          "used_edges": {
+            "a": "uv",
+            "b": "vu"
+          },
+          "target_arrivals": {},
+          "status": "FAILED",
+          "reason": "EDGE_COLLISION"
+        }
+      ],
+      "expected_terminal_reason": "EDGE_COLLISION"
+    },
+    {
+      "id": "dead_end_no_route",
+      "review_note": "Dead-end draft is structurally valid; routing from b fails on2, not when entering b on1.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 3,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "b",
+            "kind": "relay"
+          },
+          {
+            "id": "t",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "ab",
+            "from": "a",
+            "to": "b",
+            "port": 0
+          }
+        ]
+      },
+      "shift_ticks": [],
+      "expected_snapshots": [
+        {
+          "tick": 0,
+          "signals": {
+            "a": "a"
+          },
+          "switches": {},
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 1,
+          "signals": {
+            "a": "b"
+          },
+          "switches": {},
+          "used_edges": {
+            "a": "ab"
+          },
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 2,
+          "signals": {
+            "a": "b"
+          },
+          "switches": {},
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "FAILED",
+          "reason": "NO_ROUTE"
+        }
+      ],
+      "expected_terminal_reason": "NO_ROUTE"
+    },
+    {
+      "id": "bounded_cycle",
+      "review_note": "s-r-s loop may be escaped by a later SHIFT; engine waits only until fixed tick budget.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 4,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "s",
+            "kind": "switch",
+            "initial_state": 0
+          },
+          {
+            "id": "r",
+            "kind": "relay"
+          },
+          {
+            "id": "t",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "as",
+            "from": "a",
+            "to": "s",
+            "port": 0
+          },
+          {
+            "id": "sr",
+            "from": "s",
+            "to": "r",
+            "port": 0
+          },
+          {
+            "id": "st",
+            "from": "s",
+            "to": "t",
+            "port": 1
+          },
+          {
+            "id": "rs",
+            "from": "r",
+            "to": "s",
+            "port": 0
+          }
+        ]
+      },
+      "shift_ticks": [],
+      "expected_snapshots": [
+        {
+          "tick": 0,
+          "signals": {
+            "a": "a"
+          },
+          "switches": {
+            "s": 0
+          },
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 1,
+          "signals": {
+            "a": "s"
+          },
+          "switches": {
+            "s": 0
+          },
+          "used_edges": {
+            "a": "as"
+          },
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 2,
+          "signals": {
+            "a": "r"
+          },
+          "switches": {
+            "s": 0
+          },
+          "used_edges": {
+            "a": "sr"
+          },
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 3,
+          "signals": {
+            "a": "s"
+          },
+          "switches": {
+            "s": 0
+          },
+          "used_edges": {
+            "a": "rs"
+          },
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 4,
+          "signals": {
+            "a": "r"
+          },
+          "switches": {
+            "s": 0
+          },
+          "used_edges": {
+            "a": "sr"
+          },
+          "target_arrivals": {},
+          "status": "FAILED",
+          "reason": "TICK_LIMIT"
+        }
+      ],
+      "expected_terminal_reason": "TICK_LIMIT"
+    },
+    {
+      "id": "collision_over_partial_arrival",
+      "review_note": "Node collision has priority over simultaneous partial target arrival at x.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 2,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "b",
+            "kind": "source"
+          },
+          {
+            "id": "c",
+            "kind": "source"
+          },
+          {
+            "id": "m",
+            "kind": "switch",
+            "initial_state": 0
+          },
+          {
+            "id": "x",
+            "kind": "target"
+          },
+          {
+            "id": "y",
+            "kind": "target"
+          },
+          {
+            "id": "z",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "am",
+            "from": "a",
+            "to": "m",
+            "port": 0
+          },
+          {
+            "id": "bm",
+            "from": "b",
+            "to": "m",
+            "port": 0
+          },
+          {
+            "id": "cx",
+            "from": "c",
+            "to": "x",
+            "port": 0
+          },
+          {
+            "id": "my",
+            "from": "m",
+            "to": "y",
+            "port": 0
+          },
+          {
+            "id": "mz",
+            "from": "m",
+            "to": "z",
+            "port": 1
+          }
+        ]
+      },
+      "shift_ticks": [],
+      "expected_snapshots": [
+        {
+          "tick": 0,
+          "signals": {
+            "a": "a",
+            "b": "b",
+            "c": "c"
+          },
+          "switches": {
+            "m": 0
+          },
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 1,
+          "signals": {
+            "a": "m",
+            "b": "m",
+            "c": "x"
+          },
+          "switches": {
+            "m": 0
+          },
+          "used_edges": {
+            "a": "am",
+            "b": "bm",
+            "c": "cx"
+          },
+          "target_arrivals": {
+            "x": [
+              "c"
+            ]
+          },
+          "status": "FAILED",
+          "reason": "NODE_COLLISION"
+        }
+      ],
+      "expected_terminal_reason": "NODE_COLLISION"
+    },
+    {
+      "id": "target_node_collision",
+      "review_note": "Manual: two sources enter x on tick1; NODE_COLLISION wins over partial-arrival SYNC_MISS; all arrivals remain visible.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 2,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "b",
+            "kind": "source"
+          },
+          {
+            "id": "x",
+            "kind": "target"
+          },
+          {
+            "id": "y",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "ax",
+            "from": "a",
+            "to": "x",
+            "port": 0
+          },
+          {
+            "id": "bx",
+            "from": "b",
+            "to": "x",
+            "port": 0
+          }
+        ]
+      },
+      "shift_ticks": [],
+      "expected_snapshots": [
+        {
+          "tick": 0,
+          "signals": {
+            "a": "a",
+            "b": "b"
+          },
+          "switches": {},
+          "used_edges": {},
+          "target_arrivals": {},
+          "status": "RUNNING",
+          "reason": ""
+        },
+        {
+          "tick": 1,
+          "signals": {
+            "a": "x",
+            "b": "x"
+          },
+          "switches": {},
+          "used_edges": {
+            "a": "ax",
+            "b": "bx"
+          },
+          "target_arrivals": {
+            "x": [
+              "a",
+              "b"
+            ]
+          },
+          "status": "FAILED",
+          "reason": "NODE_COLLISION"
+        }
+      ],
+      "expected_terminal_reason": "NODE_COLLISION"
+    }
+  ]
+}
