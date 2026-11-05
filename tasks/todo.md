@@ -1,10 +1,10 @@
 # SIGNAL ZERO — Task checklist
 
-Sumber: [plan.md](plan.md) dan [PRD v2.2](../SIGNAL_ZERO_PRD_v2.2.md). Status proyek: **12 done / 88 todo**. Checkbox dicentang hanya setelah AC, verifikasi, dan review lulus. Laporan: [phase-01.md](evidence/phase-01.md).
+Sumber: [plan.md](plan.md) dan [PRD v2.2](../SIGNAL_ZERO_PRD_v2.2.md). Status proyek: **13 done / 87 todo**. Checkbox dicentang hanya setelah AC, verifikasi, dan review lulus. Laporan: [phase-01.md](evidence/phase-01.md).
 
 Status yang dipakai: `todo`, `in_progress`, `review`, `done`, `blocked`. Ubah status/owner/evidence pada baris task. Dependency harus `done` sebelum task diambil. ID lebih besar boleh dikerjakan lebih dahulu jika siap.
 
-**Langkah berikut yang direkomendasikan:** T013 (Fase 02). Fase 01 selesai; Fase 02 sedang berjalan.
+**Langkah berikut yang direkomendasikan:** T014 (Fase 02). Fase 01 selesai; Fase 02 sedang berjalan.
 
 **Jumlah:** 100 task — 40 P0, 58 P1, 2 P2.
 
@@ -26,7 +26,7 @@ Template penugasan: [agent-task-template.md](agent-task-template.md). Pemetaan r
 - [x] [T010 — Schema replay dan normalisasi program](phases/02-core-engine.md#t010) · **P0** · deps: T002, T003, T007, T009 · status: `done` · owner: root/team · evidence: [T010.md](evidence/T010.md)
 - [x] [T011 — Golden vectors rules dan replay](phases/02-core-engine.md#t011) · **P0** · deps: T001, T002, T009, T010 · status: `done` · owner: root/team · evidence: [T011.md](evidence/T011.md)
 - [x] [T012 — Engine gerak sinyal satu tick](phases/02-core-engine.md#t012) · **P0** · deps: T003, T009, T011 · status: `done` · owner: root/team · evidence: [T012.md](evidence/T012.md)
-- [ ] [T013 — SHIFT global sebelum pergerakan](phases/02-core-engine.md#t013) · **P0** · deps: T010, T012 · status: `todo` · owner: — · evidence: —
+- [x] [T013 — SHIFT global sebelum pergerakan](phases/02-core-engine.md#t013) · **P0** · deps: T010, T012 · status: `done` · owner: root/team · evidence: [T013.md](evidence/T013.md)
 - [ ] [T014 — Evaluasi target dan terminal state](phases/02-core-engine.md#t014) · **P0** · deps: T001, T012, T013 · status: `todo` · owner: — · evidence: —
 - [ ] [T015 — Snapshot dan replay lokal deterministik](phases/02-core-engine.md#t015) · **P0** · deps: T010, T014 · status: `todo` · owner: — · evidence: —
 - [ ] [T016 — Skor leksikografis dari program final](phases/02-core-engine.md#t016) · **P0** · deps: T002, T010, T014 · status: `todo` · owner: — · evidence: —

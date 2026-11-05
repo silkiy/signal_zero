@@ -2,9 +2,9 @@ import 'domain_error.dart';
 import 'engine_state.dart';
 import 'puzzle_spec.dart';
 
-/// Integer-tick movement only at T012. Global SHIFT is added by T013; terminal
-/// evaluation by T014. No runner should treat this intermediate slice as a
-/// complete gameplay engine until those dependent tasks are implemented.
+/// Integer-tick simultaneous movement with one global SHIFT per active tick.
+/// Terminal evaluation is added by T014; this intermediate slice is not a
+/// complete gameplay engine until that dependent task is implemented.
 final class TickEngine {
   TickEngine(this.puzzle)
     : _sourceIds = Set<String>.unmodifiable(
@@ -22,7 +22,7 @@ final class TickEngine {
   final Set<String> _sourceIds;
   final Set<String> _switchIds;
 
-  EngineState step(EngineState state) {
+  EngineState step(EngineState state, {bool shift = false}) {
     if (state.puzzleHash != puzzle.puzzleHash) {
       throw const DomainException(
         'PUZZLE_MISMATCH',
@@ -39,6 +39,14 @@ final class TickEngine {
       );
     }
     _validateState(state);
+    // Flip every switch before planning any route, including empty switches.
+    // Program normalization/scoring owns action cost, even with no switches.
+    final switches = shift
+        ? {
+            for (final entry in state.switches.entries)
+              entry.key: 1 - entry.value,
+          }
+        : state.switches;
     final positions = <String, String>{};
     final usedEdges = <String, String>{};
     final arrivals = <String, List<String>>{};
@@ -46,9 +54,7 @@ final class TickEngine {
     // another token's new location, and no source emits a second token here.
     for (final entry in state.signals.entries) {
       final node = puzzle.nodeById[entry.value]!;
-      final port = node.kind == NodeKind.switchNode
-          ? state.switches[node.id]!
-          : 0;
+      final port = node.kind == NodeKind.switchNode ? switches[node.id]! : 0;
       PuzzleEdge? route;
       for (final edge in puzzle.outgoingByNode[node.id]!) {
         if (edge.port == port) {
@@ -70,7 +76,7 @@ final class TickEngine {
       puzzleHash: puzzle.puzzleHash,
       tick: state.tick + 1,
       signals: positions,
-      switches: state.switches,
+      switches: switches,
       usedEdges: usedEdges,
       targetArrivals: arrivals,
     );

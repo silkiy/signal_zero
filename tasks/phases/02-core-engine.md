@@ -70,11 +70,11 @@ Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13�
 **Prioritas:** P0 | **Ukuran:** S | **PRD:** §3.2–3.3, FR-002.
 **Dependensi:** T010, T012.
 **Tujuan:** Hubungkan program SHIFT ke transisi engine sesuai urutan tick resmi.
-**Output rencana (≤5 file):** `apps/game/lib/domain/tick_engine.dart`, `apps/game/lib/domain/switch_routing.dart`, `apps/game/test/domain/shift_routing_test.dart`.
+**Output rencana (≤5 file):** `packages/puzzle_domain/lib/src/tick_engine.dart`, `packages/puzzle_domain/lib/src/switch_routing.dart`, `packages/puzzle_domain/test/shift_routing_test.dart`.
 **Kriteria selesai:**
-- [ ] SHIFT pada tick aktif mengubah seluruh switch dalam kelompok global secara serentak.
-- [ ] Koneksi aktif ditentukan setelah SHIFT, kemudian sinyal bergerak pada tick yang sama.
-- [ ] Tidak tersedia mutasi switch individual melalui aksi program baseline; no-SHIFT mempertahankan state routing.
+- [x] SHIFT pada tick aktif mengubah seluruh switch dalam kelompok global secara serentak.
+- [x] Koneksi aktif ditentukan setelah SHIFT, kemudian sinyal bergerak pada tick yang sama.
+- [x] Tidak tersedia mutasi switch individual melalui aksi program baseline; no-SHIFT mempertahankan state routing.
 **Verifikasi:** Vector dengan dua switch dan sinyal yang tiba bersamaan membedakan hasil SHIFT-before-movement dari urutan yang keliru; uji beberapa SHIFT antar-tick.
 
 <a id="t014"></a>
