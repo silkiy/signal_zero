@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:signal-zero:replay:sz-replay-1",
+  "title": "SIGNAL ZERO ordered replay sz-replay-1",
+  "$comment": "The bounded raw decoder additionally rejects duplicate object keys, invalid UTF-8/BOM, numeric lexical variants, input above 16384 bytes and depth above 16. ReplaySpec checks puzzle identity, strictly increasing ticks and each tick <= bound puzzle.tick_limit. Tail SHIFT is trimmed only after verified success; schema validation alone proves neither completion nor score. Public replay commitments require a private 32-byte salt until finalization.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "engine_version", "rules_version", "puzzle_hash", "shift_ticks"],
+  "properties": {
+    "schema_version": {"const": "sz-replay-1"},
+    "engine_version": {"const": "sz-engine-1"},
+    "rules_version": {"const": "sz-rules-1"},
+    "puzzle_hash": {"type": "string", "pattern": "^0x[a-f0-9]{64}(?![\\s\\S])"},
+    "shift_ticks": {
+      "type": "array", "minItems": 0, "maxItems": 64, "uniqueItems": true,
+      "items": {"type": "integer", "minimum": 1, "maximum": 64}
+    }
+  }
+}

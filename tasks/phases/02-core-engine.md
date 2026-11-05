@@ -23,11 +23,11 @@ Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13�
 **Prioritas:** P0 | **Ukuran:** S | **PRD:** §3.4–3.5, §10, FR-003, FR-004.
 **Dependensi:** T002, T003, T007, T009.
 **Tujuan:** Tetapkan aksi SHIFT terurut sebagai data replay terversi, terpisah dari riwayat klik UI.
-**Output rencana (≤5 file):** `specs/replay-schema/v1.json`, `apps/game/lib/domain/replay.dart`, `apps/game/test/domain/replay_test.dart`.
+**Output rencana (≤5 file):** `specs/replay-schema/v1.json`, `packages/puzzle_domain/lib/src/replay.dart`, `packages/puzzle_domain/test/replay_test.dart`.
 **Kriteria selesai:**
-- [ ] Replay mengikat identitas puzzle, rules/engine/replay version, dan program sesuai kontrak T002.
-- [ ] Normalisasi aksi mengikuti keputusan tick/duplikasi/order yang terdokumentasi; normalisasi dua kali menghasilkan output sama.
-- [ ] Tick invalid, versi unsupported, serta jumlah aksi berlebihan ditolak tanpa menjalankan simulasi.
+- [x] Replay mengikat identitas puzzle, rules/engine/replay version, dan program sesuai kontrak T002.
+- [x] Normalisasi aksi mengikuti keputusan tick/duplikasi/order yang terdokumentasi; normalisasi dua kali menghasilkan output sama.
+- [x] Tick invalid, versi unsupported, serta jumlah aksi berlebihan ditolak tanpa menjalankan simulasi.
 **Verifikasi:** Fixture ekuivalen menghasilkan program canonical identik; uji replay kosong, aksi tidak urut, duplikasi, tick di batas, dan input melebihi limit.
 
 <a id="t011"></a>

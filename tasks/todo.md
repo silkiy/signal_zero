@@ -1,10 +1,10 @@
 # SIGNAL ZERO — Task checklist
 
-Sumber: [plan.md](plan.md) dan [PRD v2.2](../SIGNAL_ZERO_PRD_v2.2.md). Status proyek: **9 done / 91 todo**. Checkbox dicentang hanya setelah AC, verifikasi, dan review lulus. Laporan: [phase-01.md](evidence/phase-01.md).
+Sumber: [plan.md](plan.md) dan [PRD v2.2](../SIGNAL_ZERO_PRD_v2.2.md). Status proyek: **10 done / 90 todo**. Checkbox dicentang hanya setelah AC, verifikasi, dan review lulus. Laporan: [phase-01.md](evidence/phase-01.md).
 
 Status yang dipakai: `todo`, `in_progress`, `review`, `done`, `blocked`. Ubah status/owner/evidence pada baris task. Dependency harus `done` sebelum task diambil. ID lebih besar boleh dikerjakan lebih dahulu jika siap.
 
-**Langkah berikut yang direkomendasikan:** T010 (Fase 02). Fase 01 selesai; Fase 02 sedang berjalan.
+**Langkah berikut yang direkomendasikan:** T011 (Fase 02). Fase 01 selesai; Fase 02 sedang berjalan.
 
 **Jumlah:** 100 task — 40 P0, 58 P1, 2 P2.
 
@@ -23,7 +23,7 @@ Template penugasan: [agent-task-template.md](agent-task-template.md). Pemetaan r
 ## Fase 02 — Domain, engine, dan solver dasar
 
 - [x] [T009 — Schema puzzle terversi](phases/02-core-engine.md#t009) · **P0** · deps: T001, T002, T003, T007 · status: `done` · owner: root/team · evidence: [T009.md](evidence/T009.md)
-- [ ] [T010 — Schema replay dan normalisasi program](phases/02-core-engine.md#t010) · **P0** · deps: T002, T003, T007, T009 · status: `todo` · owner: — · evidence: —
+- [x] [T010 — Schema replay dan normalisasi program](phases/02-core-engine.md#t010) · **P0** · deps: T002, T003, T007, T009 · status: `done` · owner: root/team · evidence: [T010.md](evidence/T010.md)
 - [ ] [T011 — Golden vectors rules dan replay](phases/02-core-engine.md#t011) · **P0** · deps: T001, T002, T009, T010 · status: `todo` · owner: — · evidence: —
 - [ ] [T012 — Engine gerak sinyal satu tick](phases/02-core-engine.md#t012) · **P0** · deps: T003, T009, T011 · status: `todo` · owner: — · evidence: —
 - [ ] [T013 — SHIFT global sebelum pergerakan](phases/02-core-engine.md#t013) · **P0** · deps: T010, T012 · status: `todo` · owner: — · evidence: —
