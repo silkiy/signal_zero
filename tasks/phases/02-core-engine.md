@@ -39,15 +39,15 @@ Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13�
 **Tujuan:** Sediakan oracle state/score yang diturunkan dari spesifikasi, sebelum engine dipakai sebagai pembuat expected output.
 **Output rencana (≤5 file):** `specs/test-vectors/core.json`, `specs/test-vectors/edge-cases.json`, `specs/test-vectors/README.md`.
 **Kriteria selesai:**
-- [ ] Vectors mencakup gerak dasar, SHIFT pada tick sama, gerak serentak, sinkronisasi, collision, dan batas tick.
-- [ ] Setiap vector mencantumkan puzzle, program canonical, snapshot per tick, terminal reason, dan expected score bila sukses.
-- [ ] Expected output dapat ditelusuri ke aturan T001/T002; kasus rules yang belum diputuskan ditandai blocked, tidak diberi hasil tebakan.
+- [x] Vectors mencakup gerak dasar, SHIFT pada tick sama, gerak serentak, sinkronisasi, collision, dan batas tick.
+- [x] Setiap vector mencantumkan puzzle, program canonical, snapshot per tick, terminal reason, dan expected score bila sukses.
+- [x] Expected output dapat ditelusuri ke aturan T001/T002; kasus rules yang belum diputuskan ditandai blocked, tidak diberi hasil tebakan.
 **Verifikasi:** Lakukan walkthrough manual satu tick demi satu tick dengan tabel aturan; review fixture tanpa memakai output engine sebagai satu-satunya pembenar.
 
 ### Checkpoint CP-02A — Kontrak data siap
 
-- [ ] T009–T011 memenuhi batas input dan golden vectors konsisten dengan rules.
-- [ ] Perubahan schema/rules tercatat sebelum engine, UI, dan verifier memakai kontrak tersebut.
+- [x] T009–T011 memenuhi batas input dan golden vectors konsisten dengan rules.
+- [x] Perubahan schema/rules tercatat sebelum engine, UI, dan verifier memakai kontrak tersebut.
 
 <a id="t012"></a>
 

@@ -1,0 +1,361 @@
+{
+  "schema_version": "sz-golden-1",
+  "engine_version": "sz-engine-1",
+  "rules_version": "sz-rules-1",
+  "encoding_version": "sz-cjson-1",
+  "limits_version": "sz-limits-1",
+  "suite": "core",
+  "provenance": {
+    "reviewed_at": "2026-11-06",
+    "source_hash_encoding": "sha256:utf8:crlf-to-lf",
+    "method": "Manual rules-case walkthroughs from T001/T002. No engine produced any expected transition. Python only packaged source snapshots and calculated canonical/hash/score arithmetic.",
+    "source_artifacts": [
+      {"path": "specs/test-vectors/rules-cases.json", "sha256": "0xe8fb382892daeef9b2aaed02e52c483c3e269f09291f7391208e3b9513eefa65"},
+      {"path": "specs/test-vectors/scoring-cases.json", "sha256": "0x11365d7ebdb04d4750d9a1b36f35edba5f86a947bdfcfd29027edda562501ab6"}
+    ]
+  },
+  "cases": [
+    {
+      "id": "single_path",
+      "tags": ["source", "one-edge-per-tick"],
+      "provenance": {
+        "rules_case_id": "single_path",
+        "rule_refs": ["rules.md#initial-state-and-tick-numbering", "rules.md#state-and-graph", "scoring.md#successful-score"],
+        "manual_walkthrough": "Manual: source a emits at0, traverses ab at1 and bt at2.",
+        "derivation": "verbatim manually authored snapshots; independent canonical JSON/SHA-256 and documented score arithmetic; no engine execution"
+      },
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 2,
+        "nodes": [{"id": "a", "kind": "source"}, {"id": "b", "kind": "relay"}, {"id": "t", "kind": "target"}],
+        "edges": [{"id": "ab", "from": "a", "to": "b", "port": 0}, {"id": "bt", "from": "b", "to": "t", "port": 0}]
+      },
+      "puzzle_canonical": "{\"edges\":[{\"from\":\"a\",\"id\":\"ab\",\"port\":0,\"to\":\"b\"},{\"from\":\"b\",\"id\":\"bt\",\"port\":0,\"to\":\"t\"}],\"engine_version\":\"sz-engine-1\",\"nodes\":[{\"id\":\"a\",\"kind\":\"source\"},{\"id\":\"b\",\"kind\":\"relay\"},{\"id\":\"t\",\"kind\":\"target\"}],\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-puzzle-1\",\"tick_limit\":2}",
+      "puzzle_hash": "0xed19dafa030c2e82b42d20fa4d7d29eeaacaa3b0db862d4d816155837a37fa8e",
+      "submitted_replay": {
+        "schema_version": "sz-replay-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "puzzle_hash": "0xed19dafa030c2e82b42d20fa4d7d29eeaacaa3b0db862d4d816155837a37fa8e",
+        "shift_ticks": []
+      },
+      "submitted_replay_canonical": "{\"engine_version\":\"sz-engine-1\",\"puzzle_hash\":\"0xed19dafa030c2e82b42d20fa4d7d29eeaacaa3b0db862d4d816155837a37fa8e\",\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-replay-1\",\"shift_ticks\":[]}",
+      "submitted_replay_digest": "0x168c01ea380e93dc506c611545db39d16181eb293a1543b7918ab908d0dccddd",
+      "expected": {
+        "snapshots": [
+          {"tick": 0, "signals": {"a": "a"}, "switches": {}, "used_edges": {}, "target_arrivals": {}, "status": "RUNNING", "reason": ""},
+          {"tick": 1, "signals": {"a": "b"}, "switches": {}, "used_edges": {"a": "ab"}, "target_arrivals": {}, "status": "RUNNING", "reason": ""},
+          {
+            "tick": 2,
+            "signals": {"a": "t"},
+            "switches": {},
+            "used_edges": {"a": "bt"},
+            "target_arrivals": {"t": ["a"]},
+            "status": "SUCCEEDED",
+            "reason": "SUCCESS"
+          }
+        ],
+        "terminal": {"tick": 2, "status": "SUCCEEDED", "reason": "SUCCESS"},
+        "normalized_replay": {
+          "schema_version": "sz-replay-1",
+          "engine_version": "sz-engine-1",
+          "rules_version": "sz-rules-1",
+          "puzzle_hash": "0xed19dafa030c2e82b42d20fa4d7d29eeaacaa3b0db862d4d816155837a37fa8e",
+          "shift_ticks": []
+        },
+        "normalized_replay_canonical": "{\"engine_version\":\"sz-engine-1\",\"puzzle_hash\":\"0xed19dafa030c2e82b42d20fa4d7d29eeaacaa3b0db862d4d816155837a37fa8e\",\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-replay-1\",\"shift_ticks\":[]}",
+        "normalized_replay_digest": "0x168c01ea380e93dc506c611545db39d16181eb293a1543b7918ab908d0dccddd",
+        "score": [0, 2, 0]
+      }
+    },
+    {
+      "id": "success_exact_limit",
+      "tags": ["inclusive-tick-limit", "success"],
+      "provenance": {
+        "rules_case_id": "success_exact_limit",
+        "rule_refs": ["rules.md#collision-synchronization-and-failure-priority", "scoring.md#successful-score"],
+        "manual_walkthrough": "Success evaluated before tick budget failure at tick1.",
+        "derivation": "verbatim manually authored snapshots; independent canonical JSON/SHA-256 and documented score arithmetic; no engine execution"
+      },
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 1,
+        "nodes": [{"id": "a", "kind": "source"}, {"id": "t", "kind": "target"}],
+        "edges": [{"id": "at", "from": "a", "to": "t", "port": 0}]
+      },
+      "puzzle_canonical": "{\"edges\":[{\"from\":\"a\",\"id\":\"at\",\"port\":0,\"to\":\"t\"}],\"engine_version\":\"sz-engine-1\",\"nodes\":[{\"id\":\"a\",\"kind\":\"source\"},{\"id\":\"t\",\"kind\":\"target\"}],\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-puzzle-1\",\"tick_limit\":1}",
+      "puzzle_hash": "0xa862e2c9b95079b30eb5f26bef2182ebc181fb3ef39dc63bafdecbe3915acd95",
+      "submitted_replay": {
+        "schema_version": "sz-replay-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "puzzle_hash": "0xa862e2c9b95079b30eb5f26bef2182ebc181fb3ef39dc63bafdecbe3915acd95",
+        "shift_ticks": []
+      },
+      "submitted_replay_canonical": "{\"engine_version\":\"sz-engine-1\",\"puzzle_hash\":\"0xa862e2c9b95079b30eb5f26bef2182ebc181fb3ef39dc63bafdecbe3915acd95\",\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-replay-1\",\"shift_ticks\":[]}",
+      "submitted_replay_digest": "0xcdd17e2a101cfee81cc9afc965b49a84b95f0a0c82f15bcac8f1476adb2eae68",
+      "expected": {
+        "snapshots": [
+          {"tick": 0, "signals": {"a": "a"}, "switches": {}, "used_edges": {}, "target_arrivals": {}, "status": "RUNNING", "reason": ""},
+          {
+            "tick": 1,
+            "signals": {"a": "t"},
+            "switches": {},
+            "used_edges": {"a": "at"},
+            "target_arrivals": {"t": ["a"]},
+            "status": "SUCCEEDED",
+            "reason": "SUCCESS"
+          }
+        ],
+        "terminal": {"tick": 1, "status": "SUCCEEDED", "reason": "SUCCESS"},
+        "normalized_replay": {
+          "schema_version": "sz-replay-1",
+          "engine_version": "sz-engine-1",
+          "rules_version": "sz-rules-1",
+          "puzzle_hash": "0xa862e2c9b95079b30eb5f26bef2182ebc181fb3ef39dc63bafdecbe3915acd95",
+          "shift_ticks": []
+        },
+        "normalized_replay_canonical": "{\"engine_version\":\"sz-engine-1\",\"puzzle_hash\":\"0xa862e2c9b95079b30eb5f26bef2182ebc181fb3ef39dc63bafdecbe3915acd95\",\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-replay-1\",\"shift_ticks\":[]}",
+        "normalized_replay_digest": "0xcdd17e2a101cfee81cc9afc965b49a84b95f0a0c82f15bcac8f1476adb2eae68",
+        "score": [0, 1, 0]
+      }
+    },
+    {
+      "id": "shift_before_move",
+      "tags": ["shift-before-movement", "switch-routing"],
+      "provenance": {
+        "rules_case_id": "shift_before_move",
+        "rule_refs": ["rules.md#initial-state-and-tick-numbering", "scoring.md#successful-score"],
+        "manual_walkthrough": "SHIFT at2 toggles s before routing the token already at s.",
+        "derivation": "verbatim manually authored snapshots; independent canonical JSON/SHA-256 and documented score arithmetic; no engine execution"
+      },
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 4,
+        "nodes": [
+          {"id": "a", "kind": "source"},
+          {"id": "s", "kind": "switch", "initial_state": 0},
+          {"id": "r", "kind": "relay"},
+          {"id": "t", "kind": "target"}
+        ],
+        "edges": [
+          {"id": "as", "from": "a", "to": "s", "port": 0},
+          {"id": "sr", "from": "s", "to": "r", "port": 0},
+          {"id": "st", "from": "s", "to": "t", "port": 1},
+          {"id": "rs", "from": "r", "to": "s", "port": 0}
+        ]
+      },
+      "puzzle_canonical": "{\"edges\":[{\"from\":\"a\",\"id\":\"as\",\"port\":0,\"to\":\"s\"},{\"from\":\"r\",\"id\":\"rs\",\"port\":0,\"to\":\"s\"},{\"from\":\"s\",\"id\":\"sr\",\"port\":0,\"to\":\"r\"},{\"from\":\"s\",\"id\":\"st\",\"port\":1,\"to\":\"t\"}],\"engine_version\":\"sz-engine-1\",\"nodes\":[{\"id\":\"a\",\"kind\":\"source\"},{\"id\":\"r\",\"kind\":\"relay\"},{\"id\":\"s\",\"initial_state\":0,\"kind\":\"switch\"},{\"id\":\"t\",\"kind\":\"target\"}],\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-puzzle-1\",\"tick_limit\":4}",
+      "puzzle_hash": "0x4859c4f012eb1f00609e430beabfe1543f201beac17e349ee92021a72262de9e",
+      "submitted_replay": {
+        "schema_version": "sz-replay-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "puzzle_hash": "0x4859c4f012eb1f00609e430beabfe1543f201beac17e349ee92021a72262de9e",
+        "shift_ticks": [2]
+      },
+      "submitted_replay_canonical": "{\"engine_version\":\"sz-engine-1\",\"puzzle_hash\":\"0x4859c4f012eb1f00609e430beabfe1543f201beac17e349ee92021a72262de9e\",\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-replay-1\",\"shift_ticks\":[2]}",
+      "submitted_replay_digest": "0x4b9180a6a94c6174b6069cfd2a1262870c4796364dab8a1f52a8ae7ac07808ed",
+      "expected": {
+        "snapshots": [
+          {"tick": 0, "signals": {"a": "a"}, "switches": {"s": 0}, "used_edges": {}, "target_arrivals": {}, "status": "RUNNING", "reason": ""},
+          {
+            "tick": 1,
+            "signals": {"a": "s"},
+            "switches": {"s": 0},
+            "used_edges": {"a": "as"},
+            "target_arrivals": {},
+            "status": "RUNNING",
+            "reason": ""
+          },
+          {
+            "tick": 2,
+            "signals": {"a": "t"},
+            "switches": {"s": 1},
+            "used_edges": {"a": "st"},
+            "target_arrivals": {"t": ["a"]},
+            "status": "SUCCEEDED",
+            "reason": "SUCCESS"
+          }
+        ],
+        "terminal": {"tick": 2, "status": "SUCCEEDED", "reason": "SUCCESS"},
+        "normalized_replay": {
+          "schema_version": "sz-replay-1",
+          "engine_version": "sz-engine-1",
+          "rules_version": "sz-rules-1",
+          "puzzle_hash": "0x4859c4f012eb1f00609e430beabfe1543f201beac17e349ee92021a72262de9e",
+          "shift_ticks": [2]
+        },
+        "normalized_replay_canonical": "{\"engine_version\":\"sz-engine-1\",\"puzzle_hash\":\"0x4859c4f012eb1f00609e430beabfe1543f201beac17e349ee92021a72262de9e\",\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-replay-1\",\"shift_ticks\":[2]}",
+        "normalized_replay_digest": "0x4b9180a6a94c6174b6069cfd2a1262870c4796364dab8a1f52a8ae7ac07808ed",
+        "score": [1, 2, 1]
+      }
+    },
+    {
+      "id": "global_shift",
+      "tags": ["global-shift", "simultaneous-movement"],
+      "provenance": {
+        "rules_case_id": "global_shift",
+        "rule_refs": ["rules.md#initial-state-and-tick-numbering", "scoring.md#successful-score"],
+        "manual_walkthrough": "Both bits toggle together; routing on new bits reaches x and y.",
+        "derivation": "verbatim manually authored snapshots; independent canonical JSON/SHA-256 and documented score arithmetic; no engine execution"
+      },
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 2,
+        "nodes": [
+          {"id": "a", "kind": "source"},
+          {"id": "b", "kind": "source"},
+          {"id": "u", "kind": "switch", "initial_state": 0},
+          {"id": "v", "kind": "switch", "initial_state": 0},
+          {"id": "x", "kind": "target"},
+          {"id": "y", "kind": "target"}
+        ],
+        "edges": [
+          {"id": "au", "from": "a", "to": "u", "port": 0},
+          {"id": "bv", "from": "b", "to": "v", "port": 0},
+          {"id": "uy", "from": "u", "to": "y", "port": 0},
+          {"id": "ux", "from": "u", "to": "x", "port": 1},
+          {"id": "vx", "from": "v", "to": "x", "port": 0},
+          {"id": "vy", "from": "v", "to": "y", "port": 1}
+        ]
+      },
+      "puzzle_canonical": "{\"edges\":[{\"from\":\"a\",\"id\":\"au\",\"port\":0,\"to\":\"u\"},{\"from\":\"b\",\"id\":\"bv\",\"port\":0,\"to\":\"v\"},{\"from\":\"u\",\"id\":\"ux\",\"port\":1,\"to\":\"x\"},{\"from\":\"u\",\"id\":\"uy\",\"port\":0,\"to\":\"y\"},{\"from\":\"v\",\"id\":\"vx\",\"port\":0,\"to\":\"x\"},{\"from\":\"v\",\"id\":\"vy\",\"port\":1,\"to\":\"y\"}],\"engine_version\":\"sz-engine-1\",\"nodes\":[{\"id\":\"a\",\"kind\":\"source\"},{\"id\":\"b\",\"kind\":\"source\"},{\"id\":\"u\",\"initial_state\":0,\"kind\":\"switch\"},{\"id\":\"v\",\"initial_state\":0,\"kind\":\"switch\"},{\"id\":\"x\",\"kind\":\"target\"},{\"id\":\"y\",\"kind\":\"target\"}],\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-puzzle-1\",\"tick_limit\":2}",
+      "puzzle_hash": "0x85405bbcb2d0b0726d510a76cc7600070667aafef4e676b635034c4d9473d0de",
+      "submitted_replay": {
+        "schema_version": "sz-replay-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "puzzle_hash": "0x85405bbcb2d0b0726d510a76cc7600070667aafef4e676b635034c4d9473d0de",
+        "shift_ticks": [2]
+      },
+      "submitted_replay_canonical": "{\"engine_version\":\"sz-engine-1\",\"puzzle_hash\":\"0x85405bbcb2d0b0726d510a76cc7600070667aafef4e676b635034c4d9473d0de\",\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-replay-1\",\"shift_ticks\":[2]}",
+      "submitted_replay_digest": "0xc2f29c7ccf07a835c9411cbbe37b0a410686771931efb681b8966a14fe5b2bee",
+      "expected": {
+        "snapshots": [
+          {
+            "tick": 0,
+            "signals": {"a": "a", "b": "b"},
+            "switches": {"u": 0, "v": 0},
+            "used_edges": {},
+            "target_arrivals": {},
+            "status": "RUNNING",
+            "reason": ""
+          },
+          {
+            "tick": 1,
+            "signals": {"a": "u", "b": "v"},
+            "switches": {"u": 0, "v": 0},
+            "used_edges": {"a": "au", "b": "bv"},
+            "target_arrivals": {},
+            "status": "RUNNING",
+            "reason": ""
+          },
+          {
+            "tick": 2,
+            "signals": {"a": "x", "b": "y"},
+            "switches": {"u": 1, "v": 1},
+            "used_edges": {"a": "ux", "b": "vy"},
+            "target_arrivals": {"x": ["a"], "y": ["b"]},
+            "status": "SUCCEEDED",
+            "reason": "SUCCESS"
+          }
+        ],
+        "terminal": {"tick": 2, "status": "SUCCEEDED", "reason": "SUCCESS"},
+        "normalized_replay": {
+          "schema_version": "sz-replay-1",
+          "engine_version": "sz-engine-1",
+          "rules_version": "sz-rules-1",
+          "puzzle_hash": "0x85405bbcb2d0b0726d510a76cc7600070667aafef4e676b635034c4d9473d0de",
+          "shift_ticks": [2]
+        },
+        "normalized_replay_canonical": "{\"engine_version\":\"sz-engine-1\",\"puzzle_hash\":\"0x85405bbcb2d0b0726d510a76cc7600070667aafef4e676b635034c4d9473d0de\",\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-replay-1\",\"shift_ticks\":[2]}",
+        "normalized_replay_digest": "0xc2f29c7ccf07a835c9411cbbe37b0a410686771931efb681b8966a14fe5b2bee",
+        "score": [1, 2, 1]
+      }
+    },
+    {
+      "id": "simultaneous_sync",
+      "tags": ["synchronization", "simultaneous-movement"],
+      "provenance": {
+        "rules_case_id": "simultaneous_sync",
+        "rule_refs": ["rules.md#collision-synchronization-and-failure-priority", "scoring.md#successful-score"],
+        "manual_walkthrough": "Both targets first receive exactly one token at2.",
+        "derivation": "verbatim manually authored snapshots; independent canonical JSON/SHA-256 and documented score arithmetic; no engine execution"
+      },
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 3,
+        "nodes": [
+          {"id": "a", "kind": "source"},
+          {"id": "b", "kind": "source"},
+          {"id": "p", "kind": "relay"},
+          {"id": "q", "kind": "relay"},
+          {"id": "x", "kind": "target"},
+          {"id": "y", "kind": "target"}
+        ],
+        "edges": [
+          {"id": "ap", "from": "a", "to": "p", "port": 0},
+          {"id": "bq", "from": "b", "to": "q", "port": 0},
+          {"id": "px", "from": "p", "to": "x", "port": 0},
+          {"id": "qy", "from": "q", "to": "y", "port": 0}
+        ]
+      },
+      "puzzle_canonical": "{\"edges\":[{\"from\":\"a\",\"id\":\"ap\",\"port\":0,\"to\":\"p\"},{\"from\":\"b\",\"id\":\"bq\",\"port\":0,\"to\":\"q\"},{\"from\":\"p\",\"id\":\"px\",\"port\":0,\"to\":\"x\"},{\"from\":\"q\",\"id\":\"qy\",\"port\":0,\"to\":\"y\"}],\"engine_version\":\"sz-engine-1\",\"nodes\":[{\"id\":\"a\",\"kind\":\"source\"},{\"id\":\"b\",\"kind\":\"source\"},{\"id\":\"p\",\"kind\":\"relay\"},{\"id\":\"q\",\"kind\":\"relay\"},{\"id\":\"x\",\"kind\":\"target\"},{\"id\":\"y\",\"kind\":\"target\"}],\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-puzzle-1\",\"tick_limit\":3}",
+      "puzzle_hash": "0x8731eb5c1a3d4614a189b6f5be6802fa55c7edd0722f5997835b6c3384f7ef5a",
+      "submitted_replay": {
+        "schema_version": "sz-replay-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "puzzle_hash": "0x8731eb5c1a3d4614a189b6f5be6802fa55c7edd0722f5997835b6c3384f7ef5a",
+        "shift_ticks": []
+      },
+      "submitted_replay_canonical": "{\"engine_version\":\"sz-engine-1\",\"puzzle_hash\":\"0x8731eb5c1a3d4614a189b6f5be6802fa55c7edd0722f5997835b6c3384f7ef5a\",\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-replay-1\",\"shift_ticks\":[]}",
+      "submitted_replay_digest": "0x8ae3d78af5f2e18a26eafaa9d093c1d483a425d7920177896209dab458d240c0",
+      "expected": {
+        "snapshots": [
+          {"tick": 0, "signals": {"a": "a", "b": "b"}, "switches": {}, "used_edges": {}, "target_arrivals": {}, "status": "RUNNING", "reason": ""},
+          {
+            "tick": 1,
+            "signals": {"a": "p", "b": "q"},
+            "switches": {},
+            "used_edges": {"a": "ap", "b": "bq"},
+            "target_arrivals": {},
+            "status": "RUNNING",
+            "reason": ""
+          },
+          {
+            "tick": 2,
+            "signals": {"a": "x", "b": "y"},
+            "switches": {},
+            "used_edges": {"a": "px", "b": "qy"},
+            "target_arrivals": {"x": ["a"], "y": ["b"]},
+            "status": "SUCCEEDED",
+            "reason": "SUCCESS"
+          }
+        ],
+        "terminal": {"tick": 2, "status": "SUCCEEDED", "reason": "SUCCESS"},
+        "normalized_replay": {
+          "schema_version": "sz-replay-1",
+          "engine_version": "sz-engine-1",
+          "rules_version": "sz-rules-1",
+          "puzzle_hash": "0x8731eb5c1a3d4614a189b6f5be6802fa55c7edd0722f5997835b6c3384f7ef5a",
+          "shift_ticks": []
+        },
+        "normalized_replay_canonical": "{\"engine_version\":\"sz-engine-1\",\"puzzle_hash\":\"0x8731eb5c1a3d4614a189b6f5be6802fa55c7edd0722f5997835b6c3384f7ef5a\",\"rules_version\":\"sz-rules-1\",\"schema_version\":\"sz-replay-1\",\"shift_ticks\":[]}",
+        "normalized_replay_digest": "0x8ae3d78af5f2e18a26eafaa9d093c1d483a425d7920177896209dab458d240c0",
+        "score": [0, 2, 0]
+      }
+    }
+  ]
+}
