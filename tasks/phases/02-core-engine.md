@@ -1,6 +1,6 @@
 # Fase 02 — Domain, engine, dan solver dasar
 
-Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13–15. Seluruh path di bawah adalah **rencana**, belum merupakan file implementasi. Kerjakan satu kartu setelah dependensinya selesai. Definisi collision, sinkronisasi, tick awal/akhir, dan skor harus mengikuti keputusan T001/T002; kartu ini tidak menetapkannya diam-diam.
+Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13–15. Status implementasi terdapat di [todo](../todo.md) dan evidence masing-masing task. Domain produksi berada di `packages/puzzle_domain`; path awal kartu diselaraskan saat task dikerjakan. Kerjakan dependensi lebih dahulu dan buat **satu commit per task**. Definisi collision, sinkronisasi, tick awal/akhir, dan skor mengikuti keputusan T001/T002.
 
 <a id="t009"></a>
 
@@ -9,11 +9,11 @@ Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13�
 **Prioritas:** P0 | **Ukuran:** S | **PRD:** §3.2, §10, FR-001.
 **Dependensi:** T001, T002, T003, T007.
 **Tujuan:** Buat representasi puzzle yang dapat divalidasi client, tooling, dan verifier tanpa renderer.
-**Output rencana (≤5 file):** `specs/puzzle-schema/v1.json`, `apps/game/lib/domain/puzzle_spec.dart`, `apps/game/test/domain/puzzle_spec_test.dart`.
+**Output rencana (≤5 file):** `specs/puzzle-schema/v1.json`, `packages/puzzle_domain/lib/src/puzzle_spec.dart`, `packages/puzzle_domain/test/puzzle_spec_test.dart`.
 **Kriteria selesai:**
-- [ ] Schema memuat versi, node/source/target/switch/edge, initial state, dan tick limit sesuai rules yang disepakati.
-- [ ] ID/referensi tidak valid, edge tidak sah, versi unsupported, serta ukuran melebihi batas ditolak dengan alasan terstruktur.
-- [ ] Serialisasi canonical menghasilkan byte/hash identik untuk spesifikasi identik; metadata tampilan tidak mengubah identitas gameplay tanpa aturan eksplisit.
+- [x] Schema memuat versi, node/source/target/switch/edge, initial state, dan tick limit sesuai rules yang disepakati.
+- [x] ID/referensi tidak valid, edge tidak sah, versi unsupported, serta ukuran melebihi batas ditolak dengan alasan terstruktur.
+- [x] Serialisasi canonical menghasilkan byte/hash identik untuk spesifikasi identik; metadata tampilan tidak mengubah identitas gameplay tanpa aturan eksplisit.
 **Verifikasi:** Round-trip fixture valid; coba ID duplikat, referensi hilang, urutan field berbeda, dan batas input. Rekam hasil pada runner domain yang disiapkan T003.
 
 <a id="t010"></a>

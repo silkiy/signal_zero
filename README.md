@@ -2,7 +2,7 @@
 
 Game logic-puzzle jaringan sinyal untuk Game Off 2026. Pemain memprogram satu aksi global, **SHIFT**, pada timeline untuk menyinkronkan sinyal. Gameplay ditargetkan offline dan guest-first; kompetisi Base bersifat opsional.
 
-**Status saat ini: fondasi Fase 01.** Spesifikasi aturan/identitas/batas sudah ditulis, workspace Flutter/Flame tersedia, dan pemeriksaan statis serta smoke test dasar telah berjalan. Engine, puzzle playable, 15 level, backend, dan kontrak belum diimplementasikan. Uji kompatibilitas browser tercatat terpisah pada [evidence T004](tasks/evidence/T004.md) saat tersedia; keberhasilan build saja bukan bukti seluruh fitur web kompatibel.
+**Status saat ini: Fase 02 sedang dikerjakan, satu commit per task.** Fase 01/T001–T008 selesai; schema, engine, replay, scoring dan solver dibangun dalam package Dart bersama. Kemampuan yang benar-benar selesai tercatat pada [checklist](tasks/todo.md) beserta evidence setiap task. UI gameplay, campaign lengkap, backend dan kontrak mengikuti fase selanjutnya. Hasil uji browser fondasi tercatat pada [evidence T004](tasks/evidence/T004.md); build sukses bukan bukti seluruh fitur web kompatibel.
 
 ## Dokumen kerja
 

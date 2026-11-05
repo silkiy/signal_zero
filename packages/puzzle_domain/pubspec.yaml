@@ -1,6 +1,11 @@
 name: puzzle_domain
-description: SDK-only domain foundation for SIGNAL ZERO; engine follows in phase 02.
+description: Deterministic SDK-only puzzle domain for SIGNAL ZERO.
 version: 0.1.0
 publish_to: none
 environment:
   sdk: '>=3.9.2 <4.0.0'
+dependencies:
+  crypto: 3.0.7
+dev_dependencies:
+  test: 1.26.2
+  lints: 5.1.1
