@@ -1,10 +1,10 @@
 import 'domain_error.dart';
 import 'engine_state.dart';
 import 'puzzle_spec.dart';
+import 'terminal_evaluator.dart';
 
-/// Integer-tick simultaneous movement with one global SHIFT per active tick.
-/// Terminal evaluation is added by T014; this intermediate slice is not a
-/// complete gameplay engine until that dependent task is implemented.
+/// sz-rules-1: SHIFT, routing, simultaneous movement, then terminal evaluation.
+/// Frame time, presentation, scores, wallets and IO are outside this engine.
 final class TickEngine {
   TickEngine(this.puzzle)
     : _sourceIds = Set<String>.unmodifiable(
@@ -12,6 +12,7 @@ final class TickEngine {
             .where((node) => node.kind == NodeKind.source)
             .map((node) => node.id),
       ),
+      _terminal = TerminalEvaluator(puzzle),
       _switchIds = Set<String>.unmodifiable(
         puzzle.nodes
             .where((node) => node.kind == NodeKind.switchNode)
@@ -21,6 +22,7 @@ final class TickEngine {
   final PuzzleSpec puzzle;
   final Set<String> _sourceIds;
   final Set<String> _switchIds;
+  final TerminalEvaluator _terminal;
 
   EngineState step(EngineState state, {bool shift = false}) {
     if (state.puzzleHash != puzzle.puzzleHash) {
@@ -72,13 +74,15 @@ final class TickEngine {
         arrivals.putIfAbsent(route.toId, () => []).add(entry.key);
       }
     }
-    return EngineState(
-      puzzleHash: puzzle.puzzleHash,
-      tick: state.tick + 1,
-      signals: positions,
-      switches: switches,
-      usedEdges: usedEdges,
-      targetArrivals: arrivals,
+    return _terminal.evaluate(
+      EngineState(
+        puzzleHash: puzzle.puzzleHash,
+        tick: state.tick + 1,
+        signals: positions,
+        switches: switches,
+        usedEdges: usedEdges,
+        targetArrivals: arrivals,
+      ),
     );
   }
 

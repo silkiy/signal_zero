@@ -84,17 +84,17 @@ Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13�
 **Prioritas:** P0 | **Ukuran:** S | **PRD:** §3.2–3.3, FR-001, FR-005.
 **Dependensi:** T001, T012, T013.
 **Tujuan:** Tentukan sukses, collision, sinkronisasi, dan gagal sesuai keputusan rules; hanya node khusus yang disetujui masuk baseline.
-**Output rencana (≤5 file):** `apps/game/lib/domain/terminal_evaluator.dart`, `apps/game/lib/domain/tick_engine.dart`, `apps/game/test/domain/terminal_evaluator_test.dart`.
+**Output rencana (≤5 file):** `packages/puzzle_domain/lib/src/terminal_evaluator.dart`, `packages/puzzle_domain/lib/src/tick_engine.dart`, `packages/puzzle_domain/test/terminal_evaluator_test.dart`.
 **Kriteria selesai:**
-- [ ] Semua target wajib memenuhi kondisi sinkronisasi sebelum sukses; collision ditangani sesuai tabel rules.
-- [ ] Tick limit, kondisi tanpa kelanjutan, dan prioritas sukses/gagal pada tick yang sama mengikuti T001.
-- [ ] Terminal reason dapat dibaca UI/debugger dan state terminal tidak melangkah lagi.
+- [x] Semua target wajib memenuhi kondisi sinkronisasi sebelum sukses; collision ditangani sesuai tabel rules.
+- [x] Tick limit, kondisi tanpa kelanjutan, dan prioritas sukses/gagal pada tick yang sama mengikuti T001.
+- [x] Terminal reason dapat dibaca UI/debugger dan state terminal tidak melangkah lagi.
 **Verifikasi:** Uji arrival serentak/tidak serentak, collision legal/ilegal sesuai rules, tepat tick limit, satu tick lewat limit, serta step setelah terminal.
 
 ### Checkpoint CP-02B — Semantik tick benar
 
-- [ ] T012–T014 lolos vectors gerak, SHIFT, collision, dan terminal.
-- [ ] Tidak ada keputusan mekanik yang terselip di renderer atau UI.
+- [x] T012–T014 lolos vectors gerak, SHIFT, collision, dan terminal.
+- [x] Tidak ada keputusan mekanik yang terselip di renderer atau UI.
 
 <a id="t015"></a>
 
