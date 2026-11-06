@@ -8,6 +8,8 @@ export 'src/puzzle_spec.dart';
 export 'src/replay_spec.dart';
 export 'src/simulation_runner.dart';
 export 'src/score.dart';
+export 'src/solver.dart';
+export 'src/solver_result.dart';
 export 'src/tick_engine.dart';
 export 'src/terminal_evaluator.dart';
 

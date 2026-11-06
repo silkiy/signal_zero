@@ -131,17 +131,17 @@ Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13�
 **Prioritas:** P0 | **Ukuran:** M | **PRD:** §4.2, §10, FR-009.
 **Dependensi:** T007, T014, T016.
 **Tujuan:** Cari program valid memakai engine yang sama, dalam budget kerja yang ditetapkan.
-**Output rencana (≤5 file):** `apps/game/lib/domain/solver.dart`, `apps/game/lib/domain/solver_result.dart`, `apps/game/test/domain/solver_test.dart`.
+**Output rencana (≤5 file):** `packages/puzzle_domain/lib/src/solver.dart`, `packages/puzzle_domain/lib/src/solver_result.dart`, `packages/puzzle_domain/test/solver_test.dart`.
 **Kriteria selesai:**
-- [ ] Solusi yang ditemukan dapat direplay dan sukses dalam tick limit; pencarian memakai urutan objektif skor yang disepakati.
-- [ ] Hasil membedakan solved/proven optimal, solved tanpa bukti optimal jika didukung, proven unsatisfiable, dan budget exhausted; timeout bukan bukti tidak ada solusi.
-- [ ] Budget tick/state/waktu atau unit kerja serta pembatalan membatasi CPU/memori; UI thread tidak menunggu pencarian panjang.
+- [x] Solusi yang ditemukan dapat direplay dan sukses dalam tick limit; pencarian memakai urutan objektif skor yang disepakati.
+- [x] Hasil membedakan solved/proven optimal, solved tanpa bukti optimal jika didukung, proven unsatisfiable, dan budget exhausted; timeout bukan bukti tidak ada solusi.
+- [x] Budget tick/state/waktu atau unit kerja serta pembatalan membatasi CPU/memori; UI thread tidak menunggu pencarian panjang.
 **Verifikasi:** Cocokkan puzzle kecil dengan enumerasi lengkap; replay setiap solusi; paksa budget habis pada puzzle yang sebenarnya solvable dan pastikan labelnya tidak menjadi unsatisfiable/optimal.
 
 ### Checkpoint CP-02C — Replay, skor, solver konsisten
 
-- [ ] T015–T017 menghasilkan state/score sama dan tidak menganggap timeout sebagai bukti optimalitas.
-- [ ] Solver dapat menjadi validator curated content, tanpa harus menyelesaikan setiap input editor berukuran maksimum.
+- [x] T015–T017 menghasilkan state/score sama dan tidak menganggap timeout sebagai bukti optimalitas.
+- [x] Solver dapat menjadi validator curated content, tanpa harus menyelesaikan setiap input editor berukuran maksimum.
 
 <a id="t018"></a>
 
