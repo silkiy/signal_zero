@@ -150,11 +150,11 @@ Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13�
 **Prioritas:** P0 | **Ukuran:** S | **PRD:** §10, §14, FR-001, FR-009.
 **Dependensi:** T011, T015, T016, T017.
 **Tujuan:** Buktikan invariants dan reproducibility lebih luas daripada contoh golden tetap.
-**Output rencana (≤5 file):** `apps/game/test/domain/engine_property_test.dart`, `apps/game/test/domain/solver_property_test.dart`, `specs/test-vectors/regressions.json`.
+**Output rencana (≤5 file):** `packages/puzzle_domain/test/engine_property_test.dart`, `packages/puzzle_domain/test/solver_property_test.dart`, `specs/test-vectors/regressions.json`.
 **Kriteria selesai:**
-- [ ] Test seeded mencakup determinisme, maksimal satu edge/tick, SHIFT global, normalisasi idempotent, dan stabilitas comparator.
-- [ ] Solusi solver diuji ulang oleh runner; puzzle kecil memeriksa klaim optimalitas terhadap enumerasi independen.
-- [ ] Setiap counterexample menyertakan seed/puzzle/program yang dapat diputar ulang dan diperkecil menjadi regression fixture.
+- [x] Test seeded mencakup determinisme, maksimal satu edge/tick, SHIFT global, normalisasi idempotent, dan stabilitas comparator.
+- [x] Solusi solver diuji ulang oleh runner; puzzle kecil memeriksa klaim optimalitas terhadap enumerasi independen.
+- [x] Setiap counterexample menyertakan seed/puzzle/program yang dapat diputar ulang dan diperkecil menjadi regression fixture.
 **Verifikasi:** Jalankan suite dengan seed/budget tercatat; sengaja ubah satu urutan tick dalam percobaan lokal dan pastikan property/golden yang relevan mendeteksinya sebelum perubahan dibuang.
 
 <a id="t019"></a>

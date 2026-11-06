@@ -1,10 +1,10 @@
 # SIGNAL ZERO — Task checklist
 
-Sumber: [plan.md](plan.md) dan [PRD v2.2](../SIGNAL_ZERO_PRD_v2.2.md). Status proyek: **17 done / 83 todo**. Checkbox dicentang hanya setelah AC, verifikasi, dan review lulus. Laporan: [phase-01.md](evidence/phase-01.md).
+Sumber: [plan.md](plan.md) dan [PRD v2.2](../SIGNAL_ZERO_PRD_v2.2.md). Status proyek: **18 done / 82 todo**. Checkbox dicentang hanya setelah AC, verifikasi, dan review lulus. Laporan: [phase-01.md](evidence/phase-01.md).
 
 Status yang dipakai: `todo`, `in_progress`, `review`, `done`, `blocked`. Ubah status/owner/evidence pada baris task. Dependency harus `done` sebelum task diambil. ID lebih besar boleh dikerjakan lebih dahulu jika siap.
 
-**Langkah berikut yang direkomendasikan:** T018 (Fase 02). Fase 01 selesai; Fase 02 sedang berjalan.
+**Langkah berikut yang direkomendasikan:** T019 (Fase 02). Fase 01 selesai; Fase 02 sedang berjalan.
 
 **Jumlah:** 100 task — 40 P0, 58 P1, 2 P2.
 
@@ -31,7 +31,7 @@ Template penugasan: [agent-task-template.md](agent-task-template.md). Pemetaan r
 - [x] [T015 — Snapshot dan replay lokal deterministik](phases/02-core-engine.md#t015) · **P0** · deps: T010, T014 · status: `done` · owner: root/team · evidence: [T015.md](evidence/T015.md)
 - [x] [T016 — Skor leksikografis dari program final](phases/02-core-engine.md#t016) · **P0** · deps: T002, T010, T014 · status: `done` · owner: root/team · evidence: [T016.md](evidence/T016.md)
 - [x] [T017 — Solver terbatas dengan status optimalitas jelas](phases/02-core-engine.md#t017) · **P0** · deps: T007, T014, T016 · status: `done` · owner: root/team · evidence: [T017.md](evidence/T017.md)
-- [ ] [T018 — Property tests engine dan solver](phases/02-core-engine.md#t018) · **P0** · deps: T011, T015, T016, T017 · status: `todo` · owner: — · evidence: —
+- [x] [T018 — Property tests engine dan solver](phases/02-core-engine.md#t018) · **P0** · deps: T011, T015, T016, T017 · status: `done` · owner: root/team · evidence: [T018.md](evidence/T018.md)
 - [ ] [T019 — Validator headless untuk puzzle dan replay](phases/02-core-engine.md#t019) · **P0** · deps: T009, T010, T015, T016, T017 · status: `todo` · owner: — · evidence: —
 - [ ] [T020 — Curated levels 1–3](phases/02-core-engine.md#t020) · **P0** · deps: T019 · status: `todo` · owner: — · evidence: —
 - [ ] [T021 — Vertical slice headless satu puzzle](phases/02-core-engine.md#t021) · **P0** · deps: T018, T019, T020 · status: `todo` · owner: — · evidence: —

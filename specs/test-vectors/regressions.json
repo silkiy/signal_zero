@@ -1,0 +1,325 @@
+{
+  "schema_version": "sz-regressions-1",
+  "engine_version": "sz-engine-1",
+  "rules_version": "sz-rules-1",
+  "provenance": {
+    "method": "Three manually designed minimal discriminating regression cases. These are not claimed to be randomly discovered counterexamples. Expected timing and tuple arithmetic were walked by hand without recording engine output.",
+    "generated_property_seeds": [
+      5439489,
+      5439490,
+      5439491,
+      5439493,
+      5439496,
+      5439501,
+      5439509,
+      5439522
+    ],
+    "generator_scope": "Test-only fixed graph families, each tick_limit <= 8. This is not FR-010 production generation.",
+    "counterexample_policy": "Every seeded test reports seed, family, complete puzzle and program as its failure reason. Persist and shrink a newly discovered failure here before fixing it; preserve its original seed and reproduction separately."
+  },
+  "cases": [
+    {
+      "id": "shift_before_route",
+      "seed": null,
+      "origin": "curated",
+      "manual_walkthrough": "At1 s->q. SHIFT2 flips q0->1 before q selects its edge to t, success2. Without SHIFT: q->r at2, r->q at3, q->r at4 then TICK_LIMIT.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 4,
+        "nodes": [
+          {
+            "id": "s",
+            "kind": "source"
+          },
+          {
+            "id": "q",
+            "kind": "switch",
+            "initial_state": 0
+          },
+          {
+            "id": "r",
+            "kind": "relay"
+          },
+          {
+            "id": "t",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "s_q_0",
+            "from": "s",
+            "to": "q",
+            "port": 0
+          },
+          {
+            "id": "q_r_0",
+            "from": "q",
+            "to": "r",
+            "port": 0
+          },
+          {
+            "id": "q_t_1",
+            "from": "q",
+            "to": "t",
+            "port": 1
+          },
+          {
+            "id": "r_q_0",
+            "from": "r",
+            "to": "q",
+            "port": 0
+          }
+        ]
+      },
+      "runs": [
+        {
+          "program": [],
+          "status": "FAILED",
+          "reason": "TICK_LIMIT",
+          "completion_tick": 4
+        },
+        {
+          "program": [
+            2
+          ],
+          "status": "SUCCEEDED",
+          "reason": "SUCCESS",
+          "completion_tick": 2,
+          "score": [
+            1,
+            2,
+            1
+          ]
+        },
+        {
+          "program": [
+            4
+          ],
+          "status": "SUCCEEDED",
+          "reason": "SUCCESS",
+          "completion_tick": 4,
+          "score": [
+            1,
+            4,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "global_opposite_bits",
+      "seed": null,
+      "origin": "curated",
+      "manual_walkthrough": "At1 a->q0 and b->r1. SHIFT2 flips both q to1 and r to0, so a->x and b->y together at2. Without SHIFT each follows its separate two-edge loop through u/v, timeout4.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 4,
+        "nodes": [
+          {
+            "id": "a",
+            "kind": "source"
+          },
+          {
+            "id": "b",
+            "kind": "source"
+          },
+          {
+            "id": "q",
+            "kind": "switch",
+            "initial_state": 0
+          },
+          {
+            "id": "r",
+            "kind": "switch",
+            "initial_state": 1
+          },
+          {
+            "id": "u",
+            "kind": "relay"
+          },
+          {
+            "id": "v",
+            "kind": "relay"
+          },
+          {
+            "id": "x",
+            "kind": "target"
+          },
+          {
+            "id": "y",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "a_q_0",
+            "from": "a",
+            "to": "q",
+            "port": 0
+          },
+          {
+            "id": "b_r_0",
+            "from": "b",
+            "to": "r",
+            "port": 0
+          },
+          {
+            "id": "q_u_0",
+            "from": "q",
+            "to": "u",
+            "port": 0
+          },
+          {
+            "id": "q_x_1",
+            "from": "q",
+            "to": "x",
+            "port": 1
+          },
+          {
+            "id": "u_q_0",
+            "from": "u",
+            "to": "q",
+            "port": 0
+          },
+          {
+            "id": "r_y_0",
+            "from": "r",
+            "to": "y",
+            "port": 0
+          },
+          {
+            "id": "r_v_1",
+            "from": "r",
+            "to": "v",
+            "port": 1
+          },
+          {
+            "id": "v_r_0",
+            "from": "v",
+            "to": "r",
+            "port": 0
+          }
+        ]
+      },
+      "runs": [
+        {
+          "program": [],
+          "status": "FAILED",
+          "reason": "TICK_LIMIT",
+          "completion_tick": 4
+        },
+        {
+          "program": [
+            2
+          ],
+          "status": "SUCCEEDED",
+          "reason": "SUCCESS",
+          "completion_tick": 2,
+          "score": [
+            1,
+            2,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shift_cost_before_speed",
+      "seed": null,
+      "origin": "curated",
+      "manual_walkthrough": "No SHIFT takes s->q->a->b->t, success4 with tuple(0,4,0). SHIFT2 takes s->q->t, success2 with tuple(1,2,1). Lexicographic SHIFT priority chooses the four-tick route.",
+      "puzzle": {
+        "schema_version": "sz-puzzle-1",
+        "engine_version": "sz-engine-1",
+        "rules_version": "sz-rules-1",
+        "tick_limit": 4,
+        "nodes": [
+          {
+            "id": "s",
+            "kind": "source"
+          },
+          {
+            "id": "q",
+            "kind": "switch",
+            "initial_state": 0
+          },
+          {
+            "id": "a",
+            "kind": "relay"
+          },
+          {
+            "id": "b",
+            "kind": "relay"
+          },
+          {
+            "id": "t",
+            "kind": "target"
+          }
+        ],
+        "edges": [
+          {
+            "id": "s_q_0",
+            "from": "s",
+            "to": "q",
+            "port": 0
+          },
+          {
+            "id": "q_a_0",
+            "from": "q",
+            "to": "a",
+            "port": 0
+          },
+          {
+            "id": "q_t_1",
+            "from": "q",
+            "to": "t",
+            "port": 1
+          },
+          {
+            "id": "a_b_0",
+            "from": "a",
+            "to": "b",
+            "port": 0
+          },
+          {
+            "id": "b_t_0",
+            "from": "b",
+            "to": "t",
+            "port": 0
+          }
+        ]
+      },
+      "runs": [
+        {
+          "program": [],
+          "status": "SUCCEEDED",
+          "reason": "SUCCESS",
+          "completion_tick": 4,
+          "score": [
+            0,
+            4,
+            0
+          ]
+        },
+        {
+          "program": [
+            2
+          ],
+          "status": "SUCCEEDED",
+          "reason": "SUCCESS",
+          "completion_tick": 2,
+          "score": [
+            1,
+            2,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}
