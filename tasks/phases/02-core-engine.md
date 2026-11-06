@@ -197,14 +197,14 @@ Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13�
 **Prioritas:** P0 | **Ukuran:** S | **PRD:** §3.1, §16 fase Playable Core, FR-001–FR-005.
 **Dependensi:** T018, T019, T020.
 **Tujuan:** Integrasikan observe/program/simulate/analyze/optimize pada satu puzzle sebelum renderer penuh.
-**Output rencana (≤5 file):** `apps/game/test/integration/headless_core_test.dart`, `specs/test-vectors/playable-core.json`, `docs/validation/playable-core.md`.
+**Output rencana (≤5 file):** `packages/puzzle_domain/test/integration/headless_core_test.dart`, `specs/test-vectors/playable-core.json`, `docs/validation/playable-core.md`.
 **Kriteria selesai:**
-- [ ] Satu fixture routing mencakup program gagal, perubahan timing SHIFT, lalu solusi sukses yang skornya lebih baik.
-- [ ] Replay dari hasil program memiliki snapshot/score identik dan validator memberikan status yang sama.
-- [ ] Bukti integrasi menyebut rules/engine version dan batas yang belum diuji; tidak mengklaim G1 menyenangkan hanya dari test otomatis.
+- [x] Satu fixture routing mencakup program gagal, perubahan timing SHIFT, lalu solusi sukses yang skornya lebih baik.
+- [x] Replay dari hasil program memiliki snapshot/score identik dan validator memberikan status yang sama.
+- [x] Bukti integrasi menyebut rules/engine version dan batas yang belum diuji; tidak mengklaim G1 menyenangkan hanya dari test otomatis.
 **Verifikasi:** Jalankan integration scenario melalui entry point domain nyata; simpan output gagal/sukses dan perbandingan skor.
 
 ### Checkpoint CP-02E — Core siap UI
 
-- [ ] T021 terverifikasi; tidak ada ketergantungan domain pada frame rate atau blockchain.
-- [ ] T022–T027 dapat menghubungkan UI pada engine yang sudah dibuktikan.
+- [x] T021 terverifikasi; tidak ada ketergantungan domain pada frame rate atau blockchain.
+- [x] T022–T027 dapat menghubungkan UI pada engine yang sudah dibuktikan.

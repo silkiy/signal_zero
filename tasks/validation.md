@@ -38,3 +38,7 @@ Jika ID/dependensi/AC berubah, periksa ulang DAG, isolasi P0, closure G5/G6, lin
 ## Pembaruan setelah implementasi Fase 01
 
 T001–T008 kini selesai; status di atas adalah snapshot historis sebelum implementasi. Hasil aktual tes, build, browser, spesifikasi, dan riset jam dicatat pada [evidence Fase 01](evidence/phase-01.md). Struktur tetap 100 task parent (40 P0, 58 P1, 2 P2); T004a/T004b adalah slice parent T004. Fase 02–09 dan G1–G6 belum dinyatakan lulus. Fingerprint PRD diperiksa ulang tanpa perubahan.
+
+## Pembaruan setelah implementasi Fase 02
+
+T009–T021 selesai dalam 13 commit terpisah. Lihat [phase-02.md](evidence/phase-02.md) untuk tes domain/aplikasi, CLI, parity VM/JavaScript, konten dan batas klaim. Dependency/ID/prioritas tetap; proyek memiliki 21 task done dan 79 todo. Fase 03–09 serta release gates belum dinyatakan selesai.
