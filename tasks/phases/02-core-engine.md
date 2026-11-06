@@ -164,11 +164,11 @@ Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13�
 **Prioritas:** P0 | **Ukuran:** S | **PRD:** §4.1–4.2, §10, FR-006, FR-009.
 **Dependensi:** T009, T010, T015, T016, T017.
 **Tujuan:** Sediakan entry point tanpa Flutter UI untuk memvalidasi konten dan menjalankan replay.
-**Output rencana (≤5 file):** `apps/game/tool/validate_puzzle.dart`, `apps/game/tool/replay_puzzle.dart`, `apps/game/test/tool/validation_tool_test.dart`.
+**Output rencana (≤5 file):** `packages/puzzle_domain/tool/validate_puzzle.dart`, `packages/puzzle_domain/tool/replay_puzzle.dart`, `packages/puzzle_domain/test/validation_tool_test.dart`.
 **Kriteria selesai:**
-- [ ] Tool menerima puzzle/replay terversi dan menghasilkan diagnosis serta score/solver status terstruktur.
-- [ ] Invalid schema, run gagal, dan budget exhausted dapat dibedakan; exit status tidak menyamarkan kegagalan.
-- [ ] Tool menggunakan library domain produksi, tidak memiliki engine atau formula skor kedua.
+- [x] Tool menerima puzzle/replay terversi dan menghasilkan diagnosis serta score/solver status terstruktur.
+- [x] Invalid schema, run gagal, dan budget exhausted dapat dibedakan; exit status tidak menyamarkan kegagalan.
+- [x] Tool menggunakan library domain produksi, tidak memiliki engine atau formula skor kedua.
 **Verifikasi:** Panggil entry point aktual yang dibuat T003 terhadap fixture valid, corrupt, unsatisfiable, dan budget exhausted; catat perintah yang benar setelah tooling tersedia.
 
 <a id="t020"></a>

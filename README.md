@@ -50,7 +50,7 @@ dart run tool/smoke.dart
 Pop-Location
 ```
 
-Saat ini paket tersebut hanya menyediakan label versi. Engine deterministik mengikuti task T009–T021.
+Paket tersebut menyediakan schema/canonical identity, engine deterministik, replay immutable, skor tervalidasi, dan solver terbatas tanpa renderer. Jalankan `dart test` dan `dart analyze --fatal-infos` dari folder paket untuk memverifikasinya.
 
 ## Memeriksa spesifikasi
 
@@ -85,3 +85,32 @@ Backend/verifier/scheduler/indexer dan Foundry belum dibuat. [Keputusan backend]
 - Dalam sandbox Codex, Flutter/Dart menulis SDK/Pub cache di luar workspace. Gunakan izin eksekusi yang sesuai; proses yang tersangkut pada cache/startup lock bukan bukti command sudah selesai. Catatan ini untuk pengembangan, bukan alur pemain.
 - Ikuti satu task siap dengan ownership file jelas. Simpan command/hasil nyata pada evidence dan jangan mencentang task yang masih memiliki AC wajib pending.
 - Fondasi dan dokumentasi ini dibuat dengan bantuan AI. Disclosure final, kredit/lisensi dependency, repository publik dan submission jam dituntaskan pada T096; belum ada klaim game sudah dikirim atau dipublikasikan.
+
+## Headless content tools
+
+Run these commands from `packages/puzzle_domain` with the pinned Dart SDK:
+
+```powershell
+dart tool/validate_puzzle.dart --puzzle path/to/puzzle.json
+dart tool/replay_puzzle.dart --puzzle path/to/puzzle.json --replay path/to/replay.json
+dart test test/tool/validation_tool_test.dart
+```
+
+Each invocation emits one JSON object. Validator statuses are `solvedOptimal`,
+`unsatisfiable`, `budgetExhausted`, or `cancelled`; replay statuses are
+`SUCCEEDED` or `FAILED`. Schema, arguments and IO errors use `invalidInput`.
+Exit codes: `0` success, `2` invalid input, `3` failed replay or proven UNSAT,
+`4` exhausted/cancelled solver, `1` unexpected internal error.
+
+Validator defaults to offline limits of 25,000 retained states, 50,000 actual
+transitions, 32 MiB solver memory accounting, and 5 seconds. Optional integer
+flags `--max-states`, `--max-transitions`, `--max-bytes`, and `--time-limit-ms`
+can lower each allowance to zero. Reported memory is conservative solver
+accounting, not measured process RSS. A timeout is never a proof of UNSAT.
+
+Tools read local puzzle/replay files with 64 KiB / 16 KiB limits before decoding.
+They do not fetch URLs. Default output omits programs, traces, and unsalted replay
+digests. For private local debugging, replay accepts `--trace` and
+`--include-replay`; those options reveal state/program data. Keep that output
+private for active challenges. A successful replay's optional program is the
+normalized final program after removal and revalidation of unused tail actions.
