@@ -117,11 +117,11 @@ Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13�
 **Prioritas:** P0 | **Ukuran:** S | **PRD:** §3.5, FR-005.
 **Dependensi:** T002, T010, T014.
 **Tujuan:** Hitung dan bandingkan `(shift_count, completion_ticks, programming_actions)` dari hasil engine.
-**Output rencana (≤5 file):** `apps/game/lib/domain/score.dart`, `apps/game/test/domain/score_test.dart`.
+**Output rencana (≤5 file):** `packages/puzzle_domain/lib/src/score.dart`, `packages/puzzle_domain/test/score_test.dart`.
 **Kriteria selesai:**
-- [ ] Comparator memprioritaskan SHIFT, lalu completion ticks, lalu actions; nilai lebih kecil lebih baik.
-- [ ] Programming actions mengikuti formula T002 atas program canonical; klik, undo, percobaan, dan kecepatan simulasi tidak memengaruhi skor.
-- [ ] Run gagal tidak memiliki skor sukses; completion tick mengikuti boundary resmi.
+- [x] Comparator memprioritaskan SHIFT, lalu completion ticks, lalu actions; nilai lebih kecil lebih baik.
+- [x] Programming actions mengikuti formula T002 atas program canonical; klik, undo, percobaan, dan kecepatan simulasi tidak memengaruhi skor.
+- [x] Run gagal tidak memiliki skor sukses; completion tick mengikuti boundary resmi.
 **Verifikasi:** Uji pasangan skor yang setiap komponennya berbeda, skor sama, serta dua riwayat edit yang menghasilkan program final sama.
 
 <a id="t017"></a>
