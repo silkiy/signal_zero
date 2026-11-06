@@ -1,0 +1,58 @@
+{
+  "content_version": "sz-curated-1",
+  "level_id": "level_01",
+  "title": "Satu Sinyal",
+  "learning_focus": "Amati sinyal berpindah dari source ke target pada tick 1.",
+  "puzzle": {
+    "schema_version": "sz-puzzle-1",
+    "engine_version": "sz-engine-1",
+    "rules_version": "sz-rules-1",
+    "tick_limit": 2,
+    "nodes": [
+      {
+        "id": "a",
+        "kind": "source"
+      },
+      {
+        "id": "t",
+        "kind": "target"
+      }
+    ],
+    "edges": [
+      {
+        "id": "a_t",
+        "from": "a",
+        "to": "t",
+        "port": 0
+      }
+    ]
+  },
+  "layout": {
+    "width": 960,
+    "height": 540,
+    "nodes": {
+      "a": {
+        "x": 120,
+        "y": 270
+      },
+      "t": {
+        "x": 840,
+        "y": 270
+      }
+    }
+  },
+  "solution": {
+    "shift_ticks": []
+  },
+  "baseline": {
+    "puzzle_hash": "0x8ccd686f5b2a8a7ad30c6fac8d8f2b723bd387b193768784f984500055ff5a44",
+    "score": [
+      0,
+      1,
+      0
+    ],
+    "optimality": "solvedOptimal",
+    "proof_objective": "lexicographicScore",
+    "explanation": "No SHIFT can reduce the fixed path length; all targets arrive at the same path length."
+  }
+}

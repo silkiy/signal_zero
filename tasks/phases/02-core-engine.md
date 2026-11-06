@@ -180,15 +180,15 @@ Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13�
 **Tujuan:** Buat tiga puzzle awal yang memperkenalkan source, jalur, dan target tanpa menuntut SHIFT kompleks.
 **Output rencana (≤5 file):** `apps/game/assets/levels/level_01.json`, `apps/game/assets/levels/level_02.json`, `apps/game/assets/levels/level_03.json`, `apps/game/test/content/levels_01_03_test.dart`.
 **Kriteria selesai:**
-- [ ] Masing-masing level memiliki fokus belajar, layout terbaca, tick limit, versi, dan solusi yang tervalidasi.
-- [ ] Kesulitan naik bertahap; tidak mengajarkan mekanik yang belum ditetapkan dalam rules baseline.
-- [ ] Metadata baseline score mencantumkan apakah optimalitas benar-benar terbukti oleh solver.
+- [x] Masing-masing level memiliki fokus belajar, layout terbaca, tick limit, versi, dan solusi yang tervalidasi.
+- [x] Kesulitan naik bertahap; tidak mengajarkan mekanik yang belum ditetapkan dalam rules baseline.
+- [x] Metadata baseline score mencantumkan apakah optimalitas benar-benar terbukti oleh solver.
 **Verifikasi:** Jalankan validator pada ketiga level dan replay solusinya; review pembelajaran melalui walkthrough source → path → target.
 
 ### Checkpoint CP-02D — Konten awal dapat divalidasi
 
-- [ ] T018–T020 lolos suite domain dan validator; ketiga level memiliki solusi sah.
-- [ ] Daftar perintah pengujian nyata tercatat, bukan perintah contoh yang diasumsikan tersedia.
+- [x] T018–T020 lolos suite domain dan validator; ketiga level memiliki solusi sah.
+- [x] Daftar perintah pengujian nyata tercatat, bukan perintah contoh yang diasumsikan tersedia.
 
 <a id="t021"></a>
 

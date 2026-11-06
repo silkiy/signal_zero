@@ -1,0 +1,164 @@
+{
+  "content_version": "sz-curated-1",
+  "level_id": "level_03",
+  "title": "Tiba Bersama",
+  "learning_focus": "Dua sinyal bergerak serentak dan harus mencapai kedua target pada tick yang sama.",
+  "puzzle": {
+    "schema_version": "sz-puzzle-1",
+    "engine_version": "sz-engine-1",
+    "rules_version": "sz-rules-1",
+    "tick_limit": 6,
+    "nodes": [
+      {
+        "id": "a",
+        "kind": "source"
+      },
+      {
+        "id": "b",
+        "kind": "source"
+      },
+      {
+        "id": "u1",
+        "kind": "relay"
+      },
+      {
+        "id": "u2",
+        "kind": "relay"
+      },
+      {
+        "id": "u3",
+        "kind": "relay"
+      },
+      {
+        "id": "v1",
+        "kind": "relay"
+      },
+      {
+        "id": "v2",
+        "kind": "relay"
+      },
+      {
+        "id": "v3",
+        "kind": "relay"
+      },
+      {
+        "id": "x",
+        "kind": "target"
+      },
+      {
+        "id": "y",
+        "kind": "target"
+      }
+    ],
+    "edges": [
+      {
+        "id": "a_u1",
+        "from": "a",
+        "to": "u1",
+        "port": 0
+      },
+      {
+        "id": "u1_u2",
+        "from": "u1",
+        "to": "u2",
+        "port": 0
+      },
+      {
+        "id": "u2_u3",
+        "from": "u2",
+        "to": "u3",
+        "port": 0
+      },
+      {
+        "id": "u3_x",
+        "from": "u3",
+        "to": "x",
+        "port": 0
+      },
+      {
+        "id": "b_v1",
+        "from": "b",
+        "to": "v1",
+        "port": 0
+      },
+      {
+        "id": "v1_v2",
+        "from": "v1",
+        "to": "v2",
+        "port": 0
+      },
+      {
+        "id": "v2_v3",
+        "from": "v2",
+        "to": "v3",
+        "port": 0
+      },
+      {
+        "id": "v3_y",
+        "from": "v3",
+        "to": "y",
+        "port": 0
+      }
+    ]
+  },
+  "layout": {
+    "width": 960,
+    "height": 540,
+    "nodes": {
+      "a": {
+        "x": 100,
+        "y": 170
+      },
+      "u1": {
+        "x": 290,
+        "y": 170
+      },
+      "u2": {
+        "x": 480,
+        "y": 170
+      },
+      "u3": {
+        "x": 670,
+        "y": 170
+      },
+      "x": {
+        "x": 860,
+        "y": 170
+      },
+      "b": {
+        "x": 100,
+        "y": 370
+      },
+      "v1": {
+        "x": 290,
+        "y": 370
+      },
+      "v2": {
+        "x": 480,
+        "y": 370
+      },
+      "v3": {
+        "x": 670,
+        "y": 370
+      },
+      "y": {
+        "x": 860,
+        "y": 370
+      }
+    }
+  },
+  "solution": {
+    "shift_ticks": []
+  },
+  "baseline": {
+    "puzzle_hash": "0x92e5b143af167947dfa3fb1691a7d48b41a09841164e393d8ce6223b98abf512",
+    "score": [
+      0,
+      4,
+      0
+    ],
+    "optimality": "solvedOptimal",
+    "proof_objective": "lexicographicScore",
+    "explanation": "No SHIFT can reduce the fixed path length; all targets arrive at the same path length."
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "content_version": "sz-curated-1",
+  "level_id": "level_02",
+  "title": "Satu Edge per Tick",
+  "learning_focus": "Ikuti tiga langkah jalur; sinyal tidak melompati relay.",
+  "puzzle": {
+    "schema_version": "sz-puzzle-1",
+    "engine_version": "sz-engine-1",
+    "rules_version": "sz-rules-1",
+    "tick_limit": 4,
+    "nodes": [
+      {
+        "id": "a",
+        "kind": "source"
+      },
+      {
+        "id": "r1",
+        "kind": "relay"
+      },
+      {
+        "id": "r2",
+        "kind": "relay"
+      },
+      {
+        "id": "t",
+        "kind": "target"
+      }
+    ],
+    "edges": [
+      {
+        "id": "a_r1",
+        "from": "a",
+        "to": "r1",
+        "port": 0
+      },
+      {
+        "id": "r1_r2",
+        "from": "r1",
+        "to": "r2",
+        "port": 0
+      },
+      {
+        "id": "r2_t",
+        "from": "r2",
+        "to": "t",
+        "port": 0
+      }
+    ]
+  },
+  "layout": {
+    "width": 960,
+    "height": 540,
+    "nodes": {
+      "a": {
+        "x": 100,
+        "y": 270
+      },
+      "r1": {
+        "x": 340,
+        "y": 170
+      },
+      "r2": {
+        "x": 580,
+        "y": 370
+      },
+      "t": {
+        "x": 860,
+        "y": 270
+      }
+    }
+  },
+  "solution": {
+    "shift_ticks": []
+  },
+  "baseline": {
+    "puzzle_hash": "0x02e330dc83a76f575e3c2454baa23581163e59ab6e76b390c3a40066c480084d",
+    "score": [
+      0,
+      3,
+      0
+    ],
+    "optimality": "solvedOptimal",
+    "proof_objective": "lexicographicScore",
+    "explanation": "No SHIFT can reduce the fixed path length; all targets arrive at the same path length."
+  }
+}

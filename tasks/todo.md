@@ -1,10 +1,10 @@
 # SIGNAL ZERO — Task checklist
 
-Sumber: [plan.md](plan.md) dan [PRD v2.2](../SIGNAL_ZERO_PRD_v2.2.md). Status proyek: **19 done / 81 todo**. Checkbox dicentang hanya setelah AC, verifikasi, dan review lulus. Laporan: [phase-01.md](evidence/phase-01.md).
+Sumber: [plan.md](plan.md) dan [PRD v2.2](../SIGNAL_ZERO_PRD_v2.2.md). Status proyek: **20 done / 80 todo**. Checkbox dicentang hanya setelah AC, verifikasi, dan review lulus. Laporan: [phase-01.md](evidence/phase-01.md).
 
 Status yang dipakai: `todo`, `in_progress`, `review`, `done`, `blocked`. Ubah status/owner/evidence pada baris task. Dependency harus `done` sebelum task diambil. ID lebih besar boleh dikerjakan lebih dahulu jika siap.
 
-**Langkah berikut yang direkomendasikan:** T020 (Fase 02). Fase 01 selesai; Fase 02 sedang berjalan.
+**Langkah berikut yang direkomendasikan:** T021 (Fase 02). Fase 01 selesai; Fase 02 sedang berjalan.
 
 **Jumlah:** 100 task — 40 P0, 58 P1, 2 P2.
 
@@ -33,7 +33,7 @@ Template penugasan: [agent-task-template.md](agent-task-template.md). Pemetaan r
 - [x] [T017 — Solver terbatas dengan status optimalitas jelas](phases/02-core-engine.md#t017) · **P0** · deps: T007, T014, T016 · status: `done` · owner: root/team · evidence: [T017.md](evidence/T017.md)
 - [x] [T018 — Property tests engine dan solver](phases/02-core-engine.md#t018) · **P0** · deps: T011, T015, T016, T017 · status: `done` · owner: root/team · evidence: [T018.md](evidence/T018.md)
 - [x] [T019 — Validator headless untuk puzzle dan replay](phases/02-core-engine.md#t019) · **P0** · deps: T009, T010, T015, T016, T017 · status: `done` · owner: root/team · evidence: [T019.md](evidence/T019.md)
-- [ ] [T020 — Curated levels 1–3](phases/02-core-engine.md#t020) · **P0** · deps: T019 · status: `todo` · owner: — · evidence: —
+- [x] [T020 — Curated levels 1–3](phases/02-core-engine.md#t020) · **P0** · deps: T019 · status: `done` · owner: root/team · evidence: [T020.md](evidence/T020.md)
 - [ ] [T021 — Vertical slice headless satu puzzle](phases/02-core-engine.md#t021) · **P0** · deps: T018, T019, T020 · status: `todo` · owner: — · evidence: —
 ## Fase 03 — Game playable, onboarding, dan 15 level
 
