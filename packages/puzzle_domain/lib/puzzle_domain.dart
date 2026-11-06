@@ -6,6 +6,7 @@ export 'src/domain_error.dart';
 export 'src/engine_state.dart';
 export 'src/puzzle_spec.dart';
 export 'src/replay_spec.dart';
+export 'src/simulation_runner.dart';
 export 'src/tick_engine.dart';
 export 'src/terminal_evaluator.dart';
 

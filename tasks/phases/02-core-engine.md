@@ -103,11 +103,11 @@ Sumber: [PRD v2.2](../../SIGNAL_ZERO_PRD_v2.2.md), terutama §3–4, §10, §13�
 **Prioritas:** P0 | **Ukuran:** S | **PRD:** §3.3–3.4, §10, FR-004.
 **Dependensi:** T010, T014.
 **Tujuan:** Simpan jejak transisi yang dapat diputar ulang untuk analisis dan debugging.
-**Output rencana (≤5 file):** `apps/game/lib/domain/simulation_runner.dart`, `apps/game/lib/domain/simulation_snapshot.dart`, `apps/game/test/domain/replay_runner_test.dart`.
+**Output rencana (≤5 file):** `packages/puzzle_domain/lib/src/simulation_runner.dart`, `packages/puzzle_domain/lib/src/simulation_snapshot.dart`, `packages/puzzle_domain/test/replay_runner_test.dart`.
 **Kriteria selesai:**
-- [ ] Setiap tick menghasilkan snapshot immutable beserta terminal reason bila ada.
-- [ ] Menjalankan ulang puzzle/version/program sama dari initial state menghasilkan jejak identik.
-- [ ] Runner membatasi tick/memori sesuai T007 dan menolak kombinasi versi yang tidak didukung.
+- [x] Setiap tick menghasilkan snapshot immutable beserta terminal reason bila ada.
+- [x] Menjalankan ulang puzzle/version/program sama dari initial state menghasilkan jejak identik.
+- [x] Runner membatasi tick/memori sesuai T007 dan menolak kombinasi versi yang tidak didukung.
 **Verifikasi:** Bandingkan seluruh snapshot dua run golden replay; ubah salinan snapshot dan pastikan snapshot lain tidak berubah; uji replay historis/unsupported.
 
 <a id="t016"></a>
